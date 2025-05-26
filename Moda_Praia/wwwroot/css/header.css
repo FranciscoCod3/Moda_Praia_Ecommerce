@@ -1,0 +1,132 @@
+﻿:root {
+    --cor-transparente-bordas: rgba(0, 0, 0, 0.3);
+    --cor-branco-puro: #FFFFFF; /* Defina a cor desejada aqui */
+}
+
+.logo-principal a {
+    color: var(--cor-branco-puro);
+}
+
+.Buscar-Produtos {
+    position: relative; /* Needed to position the icon absolutely within */
+    display: inline-block; /* Allows the div to wrap around the input */
+}
+
+    .Buscar-Produtos input {
+        min-width: 18ch;
+        height: auto;
+        font-size: 1rem;
+        padding: 0.5rem 2.5rem 0.5rem 0.5rem; /* Add padding on the right for the icon */
+        width: 300px;
+        border: 2px solid var(--cor-branco-puro);
+        border-radius: 2rem;
+        color: var(--cor-branco-puro);
+        box-sizing: border-box;
+        background-color: transparent; /* Include padding and border in the element's total width and height */
+    }
+
+    .Buscar-Produtos::after {
+        content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%23FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>');
+        position: absolute;
+        right: 1rem;
+        top: 50%;
+        transform: translateY(-50%);
+        pointer-events: none;
+        width: 1.2rem;
+        height: 1.2rem;
+        color: var(--cor-branco-puro);
+    }
+
+    .Buscar-Produtos input::placeholder {
+        color: var(--cor-branco-puro); /* Usando a variável para a cor do placeholder */
+    }
+
+
+    .Buscar-Produtos button {
+        display: none;
+        color: var(--cor-branco-puro);
+    }
+
+.desconto-primeira-compra {
+    display: flex;
+    justify-content: center;
+    background-color: aqua;
+}
+
+.categorias-promocoes {
+    display: flex;
+    justify-content: center;
+    text-transform: uppercase;
+    background-color: rgb(84, 97, 97);
+    padding-top: 0.6rem;
+    padding-bottom: 0.6rem;
+    font-size: 1.5rem;
+}
+
+    .categorias-promocoes a {
+        color: var(--cor-branco-puro);
+    }
+
+.desconto-primeira-compra a {
+    color: var(--cor-branco-puro);
+    font-size: 1.5rem;
+    padding: 0.25rem 0.5rem;
+}
+
+.menu-bg {
+    font-size: 1.5rem;
+    max-width: 75rem;
+    gap: 2rem;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.nav-menu .nav-item {
+    padding: 0;
+    height: 100%;
+}
+
+.menu-bg {
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.nav-menu ul {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0rem 1.125rem;
+}
+
+.nav-item a {
+    color: var(--cor-branco-puro);
+}
+
+.nav-categorias {
+    margin-top: 0px;
+    font-size: 1.5rem;
+    max-width: 40rem;
+    gap: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.categorias-item a {
+    color: var(--cor-branco-puro);
+}
+
+.header-bg {
+    background-image: url('/css/img/bg/header_bg_01.png');
+    background-size: cover; /* Garante que a imagem cubra todo o elemento */
+    background-position: center; /* Centraliza a imagem */
+    background-repeat: no-repeat; /* Evita a repetição da imagem */
+    min-height: 400px;
+}
