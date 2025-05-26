@@ -1,0 +1,87 @@
+﻿
+.rodape-bg {
+    background-color: black;
+    height: auto;
+    display: flex;
+    justify-content: center;
+}
+
+.rodape-container {
+    margin-top: 20px;
+    max-width: 900px;
+    display: flex;
+    justify-content: end;
+    align-items: start;
+    gap: 120px;
+}
+
+.categoria-rodape h2 {
+    color: white;
+    font-weight: 900;
+    font-size: 2.3rem;
+    margin-bottom: 20px;
+}
+
+.rodape-container li a {
+    color: rgb(230, 227, 227);
+    font-size: 1.2rem;
+}
+
+.rodape-container li {
+    color: rgb(230, 227, 227);
+    margin-bottom: 20px;
+}
+
+.informacoes-adicionais-bg {
+    margin-top: 30px;
+    background-color: rgb(255, 255, 255);
+    height: auto;
+    display: flex;
+    justify-content: center;
+}
+
+.informacoes-adicionais {
+    background-color: rgb(255, 255, 255);
+    width: 1200px;
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: solid rgb(205, 203, 203) 0.2px;
+    padding-bottom: 30px;
+}
+
+.sac-bg {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 20px;
+    margin-bottom:;
+}
+
+.cards-pagamento ul {
+    display: flex;
+    justify-content: start;
+    gap: 20px;
+    align-items: center;
+}
+
+.cards-pagamento img {
+    width: 80px;
+}
+
+.sac {
+    text-transform: uppercase;
+}
+
+
+.endereco-bg {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.endereco {
+    max-width: 1200px;
+    text-align: center;
+}

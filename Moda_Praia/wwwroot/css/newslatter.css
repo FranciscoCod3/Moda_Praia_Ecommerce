@@ -1,0 +1,74 @@
+﻿.newsletter-bg {
+    background-color: rgb(227, 221, 214);
+}
+
+.newsletter-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+    .newsletter-container h2 {
+        margin-top: 30px;
+        margin-bottom: 30px;
+        padding: 0;
+        font-size: 4rem;
+        text-transform: uppercase;
+    }
+
+    .newsletter-container h3 {
+        font-size: 1rem;
+        margin-top: 0;
+        text-transform: uppercase;
+        margin-bottom: 30px;
+        color: rgb(117, 109, 109);
+    }
+
+.cadastro-form {
+    margin-bottom: 30px;
+}
+
+    .cadastro-form ul {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin: 0;
+        padding-left: 0;
+    }
+
+    .cadastro-form input[type="text"], button {
+        padding: 10px 20px;
+        border-radius: 50px;
+        width: 250px;
+        background-color: rgb(249, 245, 239);
+    }
+
+    .cadastro-form input::placeholder {
+        font-size: 1rem;
+    }
+
+    .cadastro-form button[type="submit"] {
+        font-size: 1rem;
+        color: rgb(255, 255, 255);
+        font-weight: 600;
+        background-color: rgb(27, 211, 7);
+    }
+
+    .cadastro-form button:hover {
+        background-color: rgb(21, 188, 2);
+    }
+
+.receber-email-confirmado {
+    margin-bottom: 30px;
+}
+
+    .receber-email-confirmado input[type="checkbox"] {
+        transform: scale(1.8);
+        margin-right: 8px;
+    }
+
+    .receber-email-confirmado label {
+        font-size: 1.2rem;
+        opacity: 0.7;
+    }
