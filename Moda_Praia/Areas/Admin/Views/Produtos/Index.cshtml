@@ -1,0 +1,31 @@
+﻿@model IEnumerable<Moda_Praia.Models.Produto>
+
+<h2>Lista de Produtos</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.Id)</th>
+            <th>@Html.DisplayNameFor(model => model.Nome)</th>
+            <th>@Html.DisplayNameFor(model => model.PrecoVenda)</th>
+            <th>@Html.DisplayNameFor(model => model.Categoria)</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var produto in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => produto.Id)</td>
+                <td>@Html.DisplayFor(modelItem => produto.Nome)</td>
+                <td>@Html.DisplayFor(modelItem => produto.PrecoVenda)</td>
+                <td>@Html.DisplayFor(modelItem => produto.Categoria)</td>
+                <td>
+                    <a href="#">Detalhes</a> |
+                    <a href="#">Editar</a> |
+                    <a href="#">Excluir</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
