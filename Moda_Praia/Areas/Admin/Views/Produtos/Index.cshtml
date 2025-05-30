@@ -2,6 +2,7 @@
 
 <h2>Lista de Produtos</h2>
 
+
 <table class="table">
     <thead>
         <tr>
@@ -9,6 +10,7 @@
             <th>@Html.DisplayNameFor(model => model.Nome)</th>
             <th>@Html.DisplayNameFor(model => model.PrecoVenda)</th>
             <th>@Html.DisplayNameFor(model => model.Categoria)</th>
+            <th>@Html.DisplayNameFor(model => model.CorBase)</th>
             <th></th>
         </tr>
     </thead>
@@ -20,11 +22,12 @@
                 <td>@Html.DisplayFor(modelItem => produto.Nome)</td>
                 <td>@Html.DisplayFor(modelItem => produto.PrecoVenda)</td>
                 <td>@Html.DisplayFor(modelItem => produto.Categoria)</td>
+                <td>@produto.CorBase</td>
                 <td>
                     <a href="#">Detalhes</a> |
                     <a href="#">Editar</a> |
                     <a href="#">Excluir</a>
-                </td>
+               </td>
             </tr>
         }
     </tbody>
