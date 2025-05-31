@@ -1,34 +1,48 @@
 ﻿@model IEnumerable<Moda_Praia.Models.Produto>
 
-<h2>Lista de Produtos</h2>
 
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>@Html.DisplayNameFor(model => model.Id)</th>
-            <th>@Html.DisplayNameFor(model => model.Nome)</th>
-            <th>@Html.DisplayNameFor(model => model.PrecoVenda)</th>
-            <th>@Html.DisplayNameFor(model => model.Categoria)</th>
-            <th>@Html.DisplayNameFor(model => model.CorBase)</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var produto in Model)
-        {
-            <tr>
-                <td>@Html.DisplayFor(modelItem => produto.Id)</td>
-                <td>@Html.DisplayFor(modelItem => produto.Nome)</td>
-                <td>@Html.DisplayFor(modelItem => produto.PrecoVenda)</td>
-                <td>@Html.DisplayFor(modelItem => produto.Categoria)</td>
-                <td>@produto.CorBase</td>
-                <td>
-                    <a href="#">Detalhes</a> |
-                    <a href="#">Editar</a> |
-                    <a href="#">Excluir</a>
-               </td>
-            </tr>
-        }
-    </tbody>
-</table>
+<section class="produtos-grid-bg">
+    <form action="/" method="post">
+        <div class="table-container">
+        
+            <div class="header-produto">
+                 <h2>Lista de Produtos</h2>
+                 <a><input type="button" name="Adcionar" value="Adicionar" /></a>
+            </div>
+            <table class="tabela-produtos">
+                <thead>
+                    <tr class="tabela-produtos-header">
+                        <th>@Html.DisplayNameFor(Model => Model.Id)</th>
+                        <th>@Html.DisplayNameFor(Model => Model.Nome)</th>
+                        <th>@Html.DisplayNameFor(Model => Model.PrecoVenda)</th>
+                        <th>@Html.DisplayNameFor(Model => Model.Categoria)</th>
+                        <th>@Html.DisplayNameFor(Model => Model.CorBase)</th>
+                        <th>@Html.DisplayNameFor(Model => Model.QuantidadeEstoque)</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+
+                <tbody >
+                    @foreach (var produto in Model)
+                    {
+                        <tr class="tabela-produtos-data">
+                            <td>@produto.Id</td>
+                            <td>@produto.Nome</td>
+                            <td>@produto.PrecoVenda</td>
+                            <td>@produto.Categoria</td>
+                            <td>@produto.CorBase</td>
+                            <td>@produto.QuantidadeEstoque</td>
+                            <td>
+                                <a href="#">Detalhes</a> |
+                                <a href="#">Editar</a> |
+                                <a href="#">Excluir</a>
+                           </td>
+                        </tr>
+                    }
+                </tbody>
+
+            </table>
+        </div>
+    </form>
+</section>

@@ -1,0 +1,53 @@
+﻿.produtos-grid-bg {
+    display: flex;
+    justify-content: center;
+}
+
+.table-container {
+    display: grid;
+    grid-auto-columns: 1fr;
+    max-width: 75rem;
+}
+
+.tabela-produtos {
+    width: 100%; /* Garante que a tabela ocupe a largura do container */
+    border-collapse: collapse; /* Colapsa as bordas da tabela */
+    text-align:start;
+    border: 2px solid #000000;
+}
+
+.tabela-produtos-header {
+    display: grid;
+    grid-template-columns: 1fr 3fr 1.5fr 1.5fr 2fr 1fr 2fr; /* Define 6 colunas de igual largura */
+    border-bottom: 2px solid #ccc; /* Adiciona uma linha abaixo do cabeçalho */
+}
+
+.tabela-produtos-header th {
+    text-align: start;
+    padding: 0.5px 0.8px;
+    border-bottom: 1px solid #000000;
+}
+
+
+.tabela-produtos-data {
+    display: grid;
+    grid-template-columns: 1fr 3fr 1.5fr 1.5fr 2fr 1fr 2fr; /* Define 6 colunas de igual largura */
+    border-bottom: 2px solid #ccc; /* Adiciona uma linha abaixo do cabeçalho */
+}
+
+.tabela-produtos-data td {
+    text-align: start;
+    padding: 2px 4px;
+    border-bottom: 1px solid #000000;
+}
+
+.tabela-produtos-data:nth-child(even) {
+    background-color: #f0f0f0; /* Exemplo de cor de fundo para linhas pares */
+}
+
+.header-produto{
+    display:flex;
+    justify-content:space-between;
+    
+
+}
