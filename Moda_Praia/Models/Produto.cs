@@ -4,7 +4,7 @@ namespace Moda_Praia.Models
 {
     public class Produto
     {
-        [DisplayName("Identificador")]
+        [DisplayName("Codigo")]
         public int Id { get; set; }
         public string Nome { get; set; }
         [DisplayName("Preço")]
@@ -15,7 +15,7 @@ namespace Moda_Praia.Models
         public string Descricao { get; set; }
         public string Categoria { get; set; }
         public string urlName { get; set; }
-        [DisplayName("Quantidade")]
+        [DisplayName("Qtd")]
         public int? QuantidadeEstoque { get; set; }
         [DisplayName("Cor Principal")]
         public string CorBase { get; set; }

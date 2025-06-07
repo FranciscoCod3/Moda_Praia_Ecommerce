@@ -18,5 +18,10 @@ namespace Moda_Praia.Areas.Admin.Controllers
             IEnumerable<Produto> produtosDb = _context.Produtos.ToList();
             return View(produtosDb);
         }
+
+        public IActionResult Create()
+        {
+            return View();
+        }
     }
 }

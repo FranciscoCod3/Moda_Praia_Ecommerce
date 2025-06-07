@@ -1,17 +1,15 @@
 ﻿@model IEnumerable<Moda_Praia.Models.Produto>
 
-
-
 <section class="produtos-grid-bg">
     <form action="/" method="post">
         <div class="table-container">
         
             <div class="header-produto">
                  <h2>Lista de Produtos</h2>
-                 <a><input type="button" name="Adcionar" value="Adicionar" /></a>
+                  <a asp-area="Admin" asp-controller="Produtos" asp-action="Create" class="botao-adicionar-admin">Cadastrar</a>
             </div>
             <table class="tabela-produtos">
-                <thead>
+                <thead class="tabela-header">
                     <tr class="tabela-produtos-header">
                         <th>@Html.DisplayNameFor(Model => Model.Id)</th>
                         <th>@Html.DisplayNameFor(Model => Model.Nome)</th>
@@ -34,9 +32,9 @@
                             <td>@produto.CorBase</td>
                             <td>@produto.QuantidadeEstoque</td>
                             <td>
-                                <a href="#">Detalhes</a> |
-                                <a href="#">Editar</a> |
-                                <a href="#">Excluir</a>
+                                <a href="#" id="detalhes">Detalhes</a>
+                                <a href="#" id="editar">Editar</a>
+                                <a href="#" id="excluir">Excluir</a>
                            </td>
                         </tr>
                     }

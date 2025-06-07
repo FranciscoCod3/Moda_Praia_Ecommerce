@@ -63,26 +63,26 @@
 }
 
 
-    .filtros-cores ul {
-        margin: 0;
-        padding-bottom: 6px;
-    }
+.filtros-cores ul {
+    margin: 0;
+    padding-bottom: 6px;
+}
 
-    .filtros-cores li {
-        display: flex; /* Para alinhar o checkbox e o label */
-        align-items: center; /* Alinhar verticalmente ao centro */
-        margin-bottom: 5px; /* Espaçamento entre os itens da lista */
-        text-transform: capitalize;
-    }
+.filtros-cores li {
+    display: flex; /* Para alinhar o checkbox e o label */
+    align-items: center; /* Alinhar verticalmente ao centro */
+    margin-bottom: 5px; /* Espaçamento entre os itens da lista */
+    text-transform: capitalize;
+}
 
-        .filtros-cores li label {
-            margin-left: 6px;
-        }
+.filtros-cores li label {
+    margin-left: 6px;
+}
 
-        .filtros-cores li input[type="checkbox"] {
-            width: 20px;
-            height: 20px;
-        }
+.filtros-cores li input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+}
 
 .categoria-filtros {
     height: 150px; /* Altura fixa desejada */
@@ -91,26 +91,26 @@
 }
 
 
-    .categoria-filtros ul {
-        margin: 0;
-        padding-bottom: 6px;
-    }
+.categoria-filtros ul {
+    margin: 0;
+    padding-bottom: 6px;
+}
 
-    .categoria-filtros li {
-        display: flex; /* Para alinhar o checkbox e o label */
-        align-items: center; /* Alinhar verticalmente ao centro */
-        margin-bottom: 5px; /* Espaçamento entre os itens da lista */
-        text-transform: capitalize;
-    }
+.categoria-filtros li {
+    display: flex; /* Para alinhar o checkbox e o label */
+    align-items: center; /* Alinhar verticalmente ao centro */
+    margin-bottom: 5px; /* Espaçamento entre os itens da lista */
+    text-transform: capitalize;
+}
 
-        .categoria-filtros li label {
-            margin-left: 6px;
-        }
+.categoria-filtros li label {
+    margin-left: 6px;
+}
 
-        .categoria-filtros li input[type="checkbox"] {
-            width: 20px;
-            height: 20px;
-        }
+.categoria-filtros li input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+}
 
 .slider-wrapper {
     text-align: center;
@@ -154,13 +154,13 @@
     min-width: 10rem;
 }
 
-    .produto-card img {
-        width: 100%;
-        height: auto;
-        display: block;
-        flex-grow: 1;
-        object-fit: cover;
-    }
+.produto-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+    flex-grow: 1;
+    object-fit: cover;
+}
 
 .produto-card-content {
     padding: 6px;
@@ -196,6 +196,6 @@
     font-size: 14px;
 }
 
-    .buy-button:hover {
-        background-color: darkgreen;
-    }
+.buy-button:hover {
+    background-color: darkgreen;
+}
