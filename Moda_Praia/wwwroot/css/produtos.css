@@ -97,12 +97,13 @@
     padding: 2px 4px;
     border: solid #000 1px;
     border-radius: 4px;
+   
 }
 
 
-#detalhes{
-    background-color: #00ffff;
 
+#detalhes {
+    background-color: #00ffff;
 }
 
 #editar{

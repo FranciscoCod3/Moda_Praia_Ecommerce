@@ -23,5 +23,19 @@ namespace Moda_Praia.Areas.Admin.Controllers
         {
             return View();
         }
+
+        [HttpPost]
+        [AutoValidateAntiforgeryToken]
+
+        public IActionResult CreatePost(Produto produto)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(produto);
+            }
+            _context.Add(produto);
+            return RedirectToAction("Index");
+        }
+        
     }
 }
