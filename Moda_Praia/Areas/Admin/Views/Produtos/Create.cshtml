@@ -1,16 +1,72 @@
-﻿
-<h1>Adicionar Produto</h1>
-<form action="CreatePost" method="post">
-   
-    <div class="cadastro-container">
-     <div class="form-itens">
-        <input type="text" name="nome" placeholder="Nome" />
-        <label for="nome">Nome do Produto</label>
+﻿@model Moda_Praia.Areas.Admin.Models.ProdutoViewModel
 
-        <input type="number" name="Preço de custo" />
-        <label for="nome">Quantidade</label>      
+@{
+    ViewData["Title"] = "Adicionar Novo Produto";
+}
 
-     </div>
+<div class="create-produto-bg">
+    <h1 class="titulo-adicionar">Adicionar Novo Produto</h1>
+    <div class="">
+        <form asp-action="Create" method="post">
+            <div asp-validation-summary="All" class="text-danger"></div>
+
+            <div class="">
+                <label asp-for="Nome" class="control-label"></label>
+                <input asp-for="Nome" class="form-control" />
+                <span asp-validation-for="Nome" class="text-danger"></span>
+            </div>
+
+            <div class="">
+                <label asp-for="PrecoVenda" class="control-label"></label>
+                <input asp-for="PrecoVenda" class="form-control" />
+                <span asp-validation-for="PrecoVenda" class="text-danger"></span>
+            </div>
+
+            <div class="">
+                <label asp-for="PrecoCusto" class="control-label"></label>
+                <input asp-for="PrecoCusto" class="form-control" />
+                <span asp-validation-for="PrecoCusto" class="text-danger"></span>
+            </div>
+
+            <div class="">
+                <label asp-for="Descricao" class="control-label"></label>
+                <textarea asp-for="Descricao" class="form-control"></textarea>
+                <span asp-validation-for="Descricao" class="text-danger"></span>
+            </div>
+
+            <div class="">
+                <label asp-for="Categoria" class="control-label"></label>
+                <input asp-for="Categoria" class="form-control" />
+                <span asp-validation-for="Categoria" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="urlName" class="control-label"></label>
+                <input asp-for="urlName" class="form-control" />
+                <span asp-validation-for="urlName" class="text-danger"></span>
+            </div>
+
+            <div class="">
+                <label asp-for="QuantidadeEstoque" class="control-label"></label>
+                <input asp-for="QuantidadeEstoque" class="form-control" />
+                <span asp-validation-for="QuantidadeEstoque" class="text-danger"></span>
+            </div>
+
+            <div class="">
+                <label asp-for="CorBase" class="control-label"></label>
+                <input asp-for="CorBase" class="form-control" />
+                <span asp-validation-for="CorBase" class="text-danger"></span>
+            </div>
+
+            <div class="">
+                <input type="submit" value="Criar Produto" class="" />
+            </div>
+        </form>
     </div>
-</form>
+    <div>
+        <a asp-action="Index">Voltar para a Lista</a>
+    </div>
+</div>
+
+
 

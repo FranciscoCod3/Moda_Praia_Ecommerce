@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Moda_Praia.Areas.Admin.Models;
 using Moda_Praia.Data;
 using Moda_Praia.Models;
 
@@ -27,13 +28,26 @@ namespace Moda_Praia.Areas.Admin.Controllers
         [HttpPost]
         [AutoValidateAntiforgeryToken]
 
-        public IActionResult CreatePost(Produto produto)
+        public IActionResult Create(ProdutoViewModel produtoViewModel)
         {
             if (!ModelState.IsValid)
             {
-                return View(produto);
+                return View(produtoViewModel);
             }
-            _context.Add(produto);
+            var produtoBranco = new Produto
+            {
+                Nome = produtoViewModel.Nome,
+                PrecoVenda = produtoViewModel.PrecoVenda,
+                PrecoCusto = produtoViewModel.PrecoCusto,
+                Descricao = produtoViewModel.Descricao,
+                Categoria = produtoViewModel.Categoria,
+                urlName = produtoViewModel.urlName,
+                QuantidadeEstoque = produtoViewModel.QuantidadeEstoque,
+                CorBase = produtoViewModel.CorBase
+
+            };
+            _context.Add(produtoBranco);
+            _context.SaveChanges();
             return RedirectToAction("Index");
         }
         
