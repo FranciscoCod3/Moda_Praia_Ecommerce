@@ -4,12 +4,12 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Moda_Praia</title>
-    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/output.css" asp-append-version="true"/>
    
 </head>
 <body>
-    <Header>
-        <div class="categorias-promocoes">
+    <Header class="">
+        <div class="">
             <a href="#"><b>tudo </b>com <b>40%</b> de <b>Desconto</b></a>
         </div>
 
@@ -17,7 +17,7 @@
             <a href="#">10% na primeira compra</a>
         </div>
 
-        <header class="header-bg">
+        <div class="header-bg">
             <div class="menu-bg">
                 <div class="logo-principal"><a href="#">Moda Praia</a></div>
                 <div class="Buscar-Produtos">
@@ -43,8 +43,9 @@
             </ul>
 
 
-        </header>
+        </div>
     </Header>
+    
     
     @RenderBody()
         
