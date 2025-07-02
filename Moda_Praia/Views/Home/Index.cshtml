@@ -1,136 +1,156 @@
-﻿<main class="main-bg">
-    <h2 class="categoria-geral">Maios e Bodies</h2>
-    <div class="produtos-grid">
+﻿<main class="text-2xl gap-[2rem] h-auto mx-auto mb-[2rem]">
+    <h2 class="block max-w-[75rem] mx-auto">Maios e Bodies</h2>
+    <div class="max-w-[75rem] mx-auto border-t-2 border-solid border-gray-300 grid grid-cols-[1fr_3fr]">
 
-        <div class="Filtros-grid">
-            <h3>Filtros</h3>
+        <div>
+            <h3 class="m-[0] pb-[6px] border-b-[0.1px] mb-[6px]">Filtros</h3>
 
-            <div class="tamanhos">
-                <h4>Tamanhos</h4>
-                <div class="tamanho-tipos">
-                    <ul>
-                        <li>pp</li>
-                        <li>p</li>
-                        <li>m</li>
-                        <li>g</li>
-                        <li>gg</li>
+            <div class="border-b-[0.1px] border-solid border-gray-300 ">
+                <h4 class="m-[0] mb-[4p]">Tamanhos</h4>
+                <div>
+                    <ul class="m-[2px] flex flex-wrap justify-start gap-[4px] mb-[10px]">
+                        <li class="px-[4px] py-[8px] border-2 border-solid border-gray-300 rounded-[6px] uppercase">pp</li>
+                        <li class="px-[4px] py-[8px] border-2 border-solid border-gray-300 rounded-[6px] uppercase">p</li>
+                        <li class="px-[4px] py-[8px] border-2 border-solid border-gray-300 rounded-[6px] uppercase">m</li>
+                        <li class="px-[4px] py-[8px] border-2 border-solid border-gray-300 rounded-[6px] uppercase">g</li>
+                        <li class="px-[4px] py-[8px] border-2 border-solid border-gray-300 rounded-[6px] uppercase">gg</li>
                     </ul>
                 </div>
             </div>
 
 
-            <h4>cor</h4>
-            <div class="filtros-cores">
-                <ul>
-                    <li><input type="checkbox" id="amarelo" name="cor" value="amarelo"><label for="amarelo">amarelo</label></li>
-                    <li><input type="checkbox" id="branco" name="cor" value="branco"><label for="branco">branco</label></li>
-                    <li><input type="checkbox" id="preto" name="cor" value="preto"><label for="preto">preto</label></li>
-                    <li><input type="checkbox" id="verde" name="cor" value="verde"><label for="verde">verde</label></li>
-                    <li><input type="checkbox" id="vermelho" name="cor" value="vermelho"><label for="vermelho">vermelho</label></li>
-                    <li><input type="checkbox" id="azul" name="cor" value="azul"><label for="azul">azul</label></li>
-                    <li><input type="checkbox" id="marrom" name="cor" value="marrom"><label for="marrom">marrom</label></li>
-                    <li><input type="checkbox" id="lilaz" name="cor" value="lilaz"><label for="lilaz">lilaz</label></li>
-                    <li><input type="checkbox" id="rosa" name="cor" value="rosa"><label for="rosa">rosa</label></li>
-                    <li><input type="checkbox" id="vinho" name="cor" value="vinho"><label for="vinho">vinho</label></li>
+            <h4 class="mt-[6px] pb-[6px] mb-[6px] capitalize">cor</h4>
+            <div class="border-b-[0.1px] border-solid border-gray-300 h-[180px] overflow-y-auto">
+                <ul class="m-[0] pb-[6px]">
+                    <li class="flex items-center mb-[5px] capitalize"><input class="w-5 h-5 mr-[6px]" type="checkbox" id="amarelo" name="cor" value="amarelo"><label for="amarelo">amarelo</label></li>
+                    <li class="flex items-center mb-[5px] capitalize"><input class="w-5 h-5 mr-[6px]" type="checkbox" id="branco" name="cor" value="branco"><label for="branco">branco</label></li>
+                    <li class="flex items-center mb-[5px] capitalize"><input class="w-5 h-5 mr-[6px]" type="checkbox" id="preto" name="cor" value="preto"><label for="preto">preto</label></li>
+                    <li class="flex items-center mb-[5px] capitalize"><input class="w-5 h-5 mr-[6px]" type="checkbox" id="verde" name="cor" value="verde"><label for="verde">verde</label></li>
+                    <li class="flex items-center mb-[5px] capitalize"><input class="w-5 h-5 mr-[6px]" type="checkbox" id="vermelho" name="cor" value="vermelho"><label for="vermelho">vermelho</label></li>
+                    <li class="flex items-center mb-[5px] capitalize"><input class="w-5 h-5 mr-[6px]" type="checkbox" id="azul" name="cor" value="azul"><label for="azul">azul</label></li>
+                    <li class="flex items-center mb-[5px] capitalize"><input class="w-5 h-5 mr-[6px]" type="checkbox" id="marrom" name="cor" value="marrom"><label for="marrom">marrom</label></li>
+                    <li class="flex items-center mb-[5px] capitalize"><input class="w-5 h-5 mr-[6px]" type="checkbox" id="lilaz" name="cor" value="lilaz"><label for="lilaz">lilaz</label></li>
+                    <li class="flex items-center mb-[5px] capitalize"><input class="w-5 h-5 mr-[6px]" type="checkbox" id="rosa" name="cor" value="rosa"><label for="rosa">rosa</label></li>
+                    <li class="flex items-center mb-[5px] capitalize"><input class="w-5 h-5 mr-[6px]" type="checkbox" id="vinho" name="cor" value="vinho"><label for="vinho">vinho</label></li>
                 </ul>
 
             </div>
-            <h4>Categoria</h4>
-            <div class="categoria-filtros">
-                <ul>
-                    <li><input type="checkbox" id="sunga" name="categoria" value="sunga"><label for="sunga">sunga</label></li>
-                    <li><input type="checkbox" id="maio" name="categoria" value="maio"><label for="maio">maio</label></li>
-                    <li><input type="checkbox" id="saida-de-praia" name="categoria" value="saida-de-praia"><label for="saida-de-praia">saida de praia</label></li>
-                    <li><input type="checkbox" id="bikinis" name="categoria" value="bikinis"><label for="bikinis">bikinis</label></li>
-                    <li><input type="checkbox" id="sunga" name="categoria" value="sunga"><label for="sunga">sunga</label></li>
-                    <li><input type="checkbox" id="maio" name="categoria" value="maio"><label for="maio">maio</label></li>
-                    <li><input type="checkbox" id="saida-de-praia" name="categoria" value="saida-de-praia"><label for="saida-de-praia">saida de praia</label></li>
-                    <li><input type="checkbox" id="bikinis" name="categoria" value="bikinis"><label for="bikinis">bikinis</label></li>
+            <h4 class="mt-[6px] pb-[6px] mb-[6px] capitalize">Categoria</h4>
+            <div class="border-b-[0.1px] border-solid border-gray-300 h-[180px] overflow-y-auto">
+                <ul class="m-[0] pb-[6px]">
+                    <li class="flex items-center mb-[5px] capitalize"><input class="w-5 h-5 mr-[6px]" type="checkbox" id="sunga" name="categoria" value="sunga"><label for="sunga">sunga</label></li>
+                    <li class="flex items-center mb-[5px] capitalize"><input class="w-5 h-5 mr-[6px]" type="checkbox" id="maio" name="categoria" value="maio"><label for="maio">maio</label></li>
+                    <li class="flex items-center mb-[5px] capitalize"><input class="w-5 h-5 mr-[6px]" type="checkbox" id="saida-de-praia" name="categoria" value="saida-de-praia"><label for="saida-de-praia">saida de praia</label></li>
+                    <li class="flex items-center mb-[5px] capitalize"><input class="w-5 h-5 mr-[6px]" type="checkbox" id="bikinis" name="categoria" value="bikinis"><label for="bikinis">bikinis</label></li>
+                    <li class="flex items-center mb-[5px] capitalize"><input class="w-5 h-5 mr-[6px]" type="checkbox" id="sunga" name="categoria" value="sunga"><label for="sunga">sunga</label></li>
+                    <li class="flex items-center mb-[5px] capitalize"><input class="w-5 h-5 mr-[6px]" type="checkbox" id="maio" name="categoria" value="maio"><label for="maio">maio</label></li>
+                    <li class="flex items-center mb-[5px] capitalize"><input class="w-5 h-5 mr-[6px]" type="checkbox" id="saida-de-praia" name="categoria" value="saida-de-praia"><label for="saida-de-praia">saida de praia</label></li>
+                    <li class="flex items-center mb-[5px] capitalize"><input class="w-5 h-5 mr-[6px]" type="checkbox" id="bikinis" name="categoria" value="bikinis"><label for="bikinis">bikinis</label></li>
                 </ul>
             </div>
 
 
-            <h4>faixa de preço</h4>
-            <div class="slider-wrapper">
-                <input type="range" class="price-slider" id="precoMin" name="precoMin" min="100" max="300" value="100">
-                <div id="valoresPreco">De R$ <span id="valorMin">100</span> até R$ <span id="valorMax">300</span></div>
+            <h4 class="mt-[6px] pb-[6px] mb-[6px] capitalize">faixa de preço</h4>
+            <div class="text-center border-b-[0.1px] border-solid border-gray-300">
+                <input type="range" class="w-[80%]" id="precoMin" name="precoMin" min="100" max="300" value="100">
+                <div class="mt-[10px] text-start text-[1.5rem]" id="valoresPreco">De R$ <span id="valorMin">100</span> até R$ <span id="valorMax">300</span></div>
             </div>
 
         </div>
 
 
-        <div class="produtos-grid-items">
-            <div class="produto-card">
-                <a href="#"><img src="/css/img/produto-card.png" alt="Imagem 1"></a>
-                <div class="produto-card-content">
-                    <div class="produto-card-name">Cortininha tanga</div>
-                    <div class="produto-card-price">R$ 180,00</div>
-                    <div class="produto-card-parcelas">ou 6x R$ 20,00</div>
-                    <a href="#" class="buy-button">Comprar</a>
+        <div class="flex flex-wrap justify-between items-center gap-[10px] p-0 ml-[6px]">
+            <div class="overflow-hidden max-w-[17.5rem] min-w-[2.5rem]">
+                <a class="w-[100%] h-auto block grow object-cover" href="#"><img src="/css/img/produto-card.png" alt="Imagem 1"></a>
+                <div class ="p-[6px] text-start">
+                    <div class="font-[0.875rem]">Cortininha tanga</div>
+                    <div class="font-bold text-lime-700 mb-[2px]">R$ 180,00</div>
+                    <div class="font-light text-stone-600 text-xs">ou 6x R$ 20,00</div>
+                    <a class="bg-green-600 text-white px-4 py-4 mt-2 rounded font-bold text-center transform-none inline-block text-sm uppercase hover:bg-green-800" href="#" class="buy-button">Comprar</a>
                 </div>
             </div>
 
-            <div class="produto-card">
-                <a href="#"><img src="/css/img/produto-card.png" alt="Imagem 1"></a>
-                <div class="produto-card-content">
-                    <div class="produto-card-name">Cortininha tanga</div>
-                    <div class="produto-card-price">R$ 180,00</div>
-                    <div class="produto-card-parcelas">ou 6x R$ 20,00</div>
-                    <a href="#" class="buy-button">Comprar</a>
+             <div class="overflow-hidden max-w-[17.5rem] min-w-[2.5rem]">
+                <a class="w-[100%] h-auto block grow object-cover" href="#"><img src="/css/img/produto-card.png" alt="Imagem 1"></a>
+                <div class ="p-[6px] text-start">
+                    <div class="font-[0.875rem]">Cortininha tanga</div>
+                    <div class="font-bold text-lime-700 mb-[2px]">R$ 180,00</div>
+                    <div class="font-light text-stone-600 text-xs">ou 6x R$ 20,00</div>
+                    <a class="bg-green-600 text-white px-4 py-4 mt-2 rounded font-bold text-center transform-none inline-block text-sm uppercase hover:bg-green-800" href="#" class="buy-button">Comprar</a>
                 </div>
             </div>
 
-            <div class="produto-card">
-                <a href="#"><img src="/css/img/produto-card.png" alt="Imagem 1"></a>
-                <div class="produto-card-content">
-                    <div class="produto-card-name">Cortininha tanga</div>
-                    <div class="produto-card-price">R$ 180,00</div>
-                    <div class="produto-card-parcelas">ou 6x R$ 20,00</div>
-                    <a href="#" class="buy-button">Comprar</a>
+             <div class="overflow-hidden max-w-[17.5rem] min-w-[2.5rem]">
+                <a class="w-[100%] h-auto block grow object-cover" href="#"><img src="/css/img/produto-card.png" alt="Imagem 1"></a>
+                <div class ="p-[6px] text-start">
+                    <div class="font-[0.875rem]">Cortininha tanga</div>
+                    <div class="font-bold text-lime-700 mb-[2px]">R$ 180,00</div>
+                    <div class="font-light text-stone-600 text-xs">ou 6x R$ 20,00</div>
+                    <a class="bg-green-600 text-white px-4 py-4 mt-2 rounded font-bold text-center transform-none inline-block text-sm uppercase hover:bg-green-800" href="#" class="buy-button">Comprar</a>
                 </div>
             </div>
 
-             <div class="produto-card">
-                <a href="#"><img src="/css/img/produto-card.png" alt="Imagem 1"></a>
-                <div class="produto-card-content">
-                    <div class="produto-card-name">Cortininha tanga</div>
-                    <div class="produto-card-price">R$ 180,00</div>
-                    <div class="produto-card-parcelas">ou 6x R$ 20,00</div>
-                    <a href="#" class="buy-button">Comprar</a>
+            <div class="overflow-hidden max-w-[17.5rem] min-w-[2.5rem]">
+                <a class="w-[100%] h-auto block grow object-cover" href="#"><img src="/css/img/produto-card.png" alt="Imagem 1"></a>
+                <div class="p-[6px] text-start">
+                    <div class="font-[0.875rem]">Cortininha tanga</div>
+                    <div class="font-bold text-lime-700 mb-[2px]">R$ 180,00</div>
+                    <div class="font-light text-stone-600 text-xs">ou 6x R$ 20,00</div>
+                    <a class="bg-green-600 text-white px-4 py-4 mt-2 rounded font-bold text-center transform-none inline-block text-sm uppercase hover:bg-green-800" href="#" class="buy-button">Comprar</a>
                 </div>
             </div>
 
-             <div class="produto-card">
-                <a href="#"><img src="/css/img/produto-card.png" alt="Imagem 1"></a>
-                <div class="produto-card-content">
-                    <div class="produto-card-name">Cortininha tanga</div>
-                    <div class="produto-card-price">R$ 180,00</div>
-                    <div class="produto-card-parcelas">ou 6x R$ 20,00</div>
-                    <a href="#" class="buy-button">Comprar</a>
+            <div class="overflow-hidden max-w-[17.5rem] min-w-[2.5rem]">
+                <a class="w-[100%] h-auto block grow object-cover" href="#"><img src="/css/img/produto-card.png" alt="Imagem 1"></a>
+                <div class="p-[6px] text-start">
+                    <div class="font-[0.875rem]">Cortininha tanga</div>
+                    <div class="font-bold text-lime-700 mb-[2px]">R$ 180,00</div>
+                    <div class="font-light text-stone-600 text-xs">ou 6x R$ 20,00</div>
+                    <a class="bg-green-600 text-white px-4 py-4 mt-2 rounded font-bold text-center transform-none inline-block text-sm uppercase hover:bg-green-800" href="#" class="buy-button">Comprar</a>
                 </div>
             </div>
 
-             <div class="produto-card">
-                <a href="#"><img src="/css/img/produto-card.png" alt="Imagem 1"></a>
-                <div class="produto-card-content">
-                    <div class="produto-card-name">Cortininha tanga</div>
-                    <div class="produto-card-price">R$ 180,00</div>
-                    <div class="produto-card-parcelas">ou 6x R$ 20,00</div>
-                    <a href="#" class="buy-button">Comprar</a>
+            <div class="overflow-hidden max-w-[17.5rem] min-w-[2.5rem]">
+                <a class="w-[100%] h-auto block grow object-cover" href="#"><img src="/css/img/produto-card.png" alt="Imagem 1"></a>
+                <div class="p-[6px] text-start">
+                    <div class="font-[0.875rem]">Cortininha tanga</div>
+                    <div class="font-bold text-lime-700 mb-[2px]">R$ 180,00</div>
+                    <div class="font-light text-stone-600 text-xs">ou 6x R$ 20,00</div>
+                    <a class="bg-green-600 text-white px-4 py-4 mt-2 rounded font-bold text-center transform-none inline-block text-sm uppercase hover:bg-green-800" href="#" class="buy-button">Comprar</a>
                 </div>
             </div>
 
-            <div class="produto-card">
-                <a href="#"><img src="/css/img/produto-card.png" alt="Imagem 1"></a>
-                <div class="produto-card-content">
-                    <div class="produto-card-name">Cortininha tanga</div>
-                    <div class="produto-card-price">R$ 180,00</div>
-                    <div class="produto-card-parcelas">ou 6x R$ 20,00</div>
-                    <a href="#" class="buy-button">Comprar</a>
+             <div class="overflow-hidden max-w-[17.5rem] min-w-[2.5rem]">
+                <a class="w-[100%] h-auto block grow object-cover" href="#"><img src="/css/img/produto-card.png" alt="Imagem 1"></a>
+                <div class ="p-[6px] text-start">
+                    <div class="font-[0.875rem]">Cortininha tanga</div>
+                    <div class="font-bold text-lime-700 mb-[2px]">R$ 180,00</div>
+                    <div class="font-light text-stone-600 text-xs">ou 6x R$ 20,00</div>
+                    <a class="bg-green-600 text-white px-4 py-4 mt-2 rounded font-bold text-center transform-none inline-block text-sm uppercase hover:bg-green-800" href="#" class="buy-button">Comprar</a>
                 </div>
             </div>
-           
-          
+
+            <div class="overflow-hidden max-w-[17.5rem] min-w-[2.5rem]">
+                <a class="w-[100%] h-auto block grow object-cover" href="#"><img src="/css/img/produto-card.png" alt="Imagem 1"></a>
+                <div class="p-[6px] text-start">
+                    <div class="font-[0.875rem]">Cortininha tanga</div>
+                    <div class="font-bold text-lime-700 mb-[2px]">R$ 180,00</div>
+                    <div class="font-light text-stone-600 text-xs">ou 6x R$ 20,00</div>
+                    <a class="bg-green-600 text-white px-4 py-4 mt-2 rounded font-bold text-center transform-none inline-block text-sm uppercase hover:bg-green-800" href="#" class="buy-button">Comprar</a>
+                </div>
+            </div>
+
+            <div class="overflow-hidden max-w-[17.5rem] min-w-[2.5rem]">
+                <a class="w-[100%] h-auto block grow object-cover" href="#"><img src="/css/img/produto-card.png" alt="Imagem 1"></a>
+                <div class="p-[6px] text-start">
+                    <div class="font-[0.875rem]">Cortininha tanga</div>
+                    <div class="font-bold text-lime-700 mb-[2px]">R$ 180,00</div>
+                    <div class="font-light text-stone-600 text-xs">ou 6x R$ 20,00</div>
+                    <a class="bg-green-600 text-white px-4 py-4 mt-2 rounded font-bold text-center transform-none inline-block text-sm uppercase hover:bg-green-800" href="#" class="buy-button">Comprar</a>
+                </div>
+            </div>
+                     
+
            
         </div>
     </div>

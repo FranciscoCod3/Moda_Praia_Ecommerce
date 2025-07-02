@@ -8,180 +8,189 @@
    
 </head>
 <body>
-    <Header class="">
-        <div class="">
-            <a href="#"><b>tudo </b>com <b>40%</b> de <b>Desconto</b></a>
+    <Header>
+
+        <div class="flex justify-center uppercase bg-emerald-300 py-[0.6rem]">
+                <a href="#"><b>tudo </b>com <b>40%</b> de <b>Desconto</b></a>
         </div>
 
-        <div class="desconto-primeira-compra">
-            <a href="#">10% na primeira compra</a>
+        <div class="flex justify-center bg-white text-black text-2xl px-[0.25rem] py-[0.5rem]">
+                <a href="#">10% na primeira compra</a>
         </div>
 
-        <div class="header-bg">
-            <div class="menu-bg">
-                <div class="logo-principal"><a href="#">Moda Praia</a></div>
-                <div class="Buscar-Produtos">
-                    <input type="text" placeholder="Buscar Produtos">
+        <div class="bg-[url('img/bg/header_bg_01.png')] bg-cover bg-center bg-no-repeat h-96">
+            <div class=" text-2xl max-w-6xl gap-[1.5rem] flex justify-end flex-wrap items-center mx-auto py-[1rem]">
+                    
+                <div><a class="text-white" href="#">Moda Praia</a></div>
+                <div>
+                    <input class="min-w-[30ch] h-auto text-base p-[0.5rem] rounded-full   bg-transparent placeholder-white border-2  border-white" type="text" placeholder="Buscar Produtos">
                 </div>
-                <nav class="nav-menu">
-                    <ul class="nav-item">
-                        <li><a  href="#"><img src="~/css/img/icons/home/coracao.svg" alt="Favoritos"></a></li>
-                        <li><a  href="#"><img src="~/css/img/icons/home/login.svg" alt="login"></a></li>
-                        <li><a  href="#"><img src="~/css/img/icons/home/carrinho_compra.svg" alt="carrinho" /></a></li>
-                        <li><a  asp-area="Admin" asp-controller="Produtos" asp-action="Index"><img src="~/css/img/icons/home/admin.svg" alt="Admin" /></a></li>
+                <nav>
+                    <ul class="flex flex-wrap items-center h-auto gap-x-4">
+                        <li class="text-white"><a href="#">Favoritos</a></li>
+                        <li class="text-white"><a href="#">Login</a></li>
+                        <li class="text-white"><a href="#">Carrinho</a></li>
+                        <li class="text-white"><a asp-area="Admin" asp-controller="Produtos" asp-action="Index">Admin</a></li>
                     </ul>
-
-
                 </nav>
+                 
+
+                <ul class="text-2xl max-w-2xl gap-[2rem] flex justify-between items-center flex-wrap mx-auto">
+                    <li class="text-white"><a href="#">Maiôs</a></li>
+                    <li class="text-white"><a href="#">Biquinis</a></li>
+                    <li class="text-white"><a href="#">Saidas de Praia</a></li>
+                    <li class="text-white"><a href="#">Sungas</a></li>
+                </ul>
+
+
             </div>
 
-            <ul class="nav-categorias">
-                <li class="categorias-item"><a href="#">Maiôs</a></li>
-                <li class="categorias-item"><a href="#">Biquinis</a></li>
-                <li class="categorias-item"><a href="#">Saidas de Praia</a></li>
-                <li class="categorias-item"><a href="#">Sungas</a></li>
-            </ul>
-
-
-        </div>
+        </div> 
     </Header>
     
+
+
+
     
     @RenderBody()
         
-    
+  
 
-    <section class="painel-promocoes-bg">
-        <div class="painel-promocoes">
-            <a href="#"><img src="~/css/img/painel_promocoes.png" alt="Maios"></a>
+    <section class="w-full flex justify-center">
+        <div class="max-w-7xl w-full">
+            <a href="#"><img class="block w-full h-72  object-cover object-top" src="~/css/img/painel_promocoes.png" alt="Maios"></a>
         </div>
-    </section>
+    </section>  
 
-    <section class="descricao-produtos-bg">
-        <div class="descricao-container">
-            <div class="secao-produto">
-                <h3 class="titulo-secao">Maiôs</h3>
-                <p class="descricao-secao">
+
+
+
+
+
+
+    <section class="flex flex-col justify-center items-center mb-8">
+        <div id="painel-recolher" class="max-w-4xl h-32 overflow-hidden">
+
+            <div class="mb-5 text-center">
+                <h3 class="text-center text-2xl mb-2 font-roboto">Maiôs</h3>
+                <p class="text-xl opacity-60">
                     O <b>Maiô Verão 2025</b> da BeachWear manteve a elegância que se espera da peça, mas trouxe muita modernidade com uma <b>estética contemporânea e uma pegada easy chic</b>. Os novos maiôs valorizam o corpo, oferecem conforto e ainda possuem detalhes únicos que fazem a diferença.
                     Tanto os maiôs quanto os bodies da coleção nova foram desenvolvidos com estampas e tecidos fluidos para garantir um toque de frescor e liberdade, características essenciais da <b>tendência verão 2025</b>. Essas peças são perfeitas para compor looks praianos ou urbanos, basta você ousar!
                 </p>
             </div>
 
-            <div class="secao-produto">
-                <h3 class="titulo-secao">Biquínis</h3>
-                <p class="descricao-secao">
+            <div class="mb-5 text-center">
+                <h3 class="text-center text-2xl mb-2 font-roboto">Biquínis</h3>
+                <p class="text-xl opacity-60">
                     A coleção começa com o <b>Biquíni Verão 2025</b> que traz muita elegância e inovação. As novas modelagens foram pensadas para valorizar o corpo e garantir conforto, cada <b>Biquíni Top</b> é uma peça única com detalhes especiais.
                     Os novos cortes e combinações de cores dos biquínis refletem as principais tendências moda praia verão 2025. Seja para um dia de sol na praia ou para uma pool party, os biquínis da BeachWear são perfeitos para qualquer ocasião.
                 </p>
             </div>
 
-            <div class="secao-produto">
-                <h3 class="titulo-secao">Saídas de Praia</h3>
-                <p class="descricao-secao">
+            <div class="mb-5 text-center">
+                <h3 class="text-center text-2xl mb-2 font-roboto">Saídas de Praia</h3>
+                <p class="text-xl opacity-60">
                     A <b>Saída de Praia 2025</b> é ideal para complementar um belo look praiano ou compor um visual urbano, ou seja, você pode arrasar dentro e fora das areias. As saídas de praia foram confeccionadas com tecidos fluidos e traz <b>padrões clássicos e mix de estampas</b> que refletem a essência da marca.
                     Essas peças são ideais para transitar da areia para ambientes urbanos com estilo e conforto. As roupas de praia da BeachWear combinam <b>sofisticação e praticidade</b>, permitindo que você aproveite o melhor do verão com elegância.
                 </p>
             </div>
 
-            <div class="secao-produto">
-                <h3 class="titulo-secao">Sungas</h3>
-                <p class="descricao-secao">A BeachWear também oferece uma linha de <b>sungas</b> que combinam conforto e estilo para o público masculino. Com diversos cortes e estampas alinhadas às tendências do verão 2025, as sungas são perfeitas para aproveitar os dias de sol com atitude e elegância. Os tecidos de alta qualidade garantem um caimento perfeito e liberdade de movimento para todas as atividades na praia ou piscina.</p>
+            <div class="mb-5 text-center">
+                <h3 class="text-center text-2xl mb-2 font-roboto">Sungas</h3>
+                <p class="text-xl opacity-60">A BeachWear também oferece uma linha de <b>sungas</b> que combinam conforto e estilo para o público masculino. Com diversos cortes e estampas alinhadas às tendências do verão 2025, as sungas são perfeitas para aproveitar os dias de sol com atitude e elegância. Os tecidos de alta qualidade garantem um caimento perfeito e liberdade de movimento para todas as atividades na praia ou piscina.</p>
             </div>
 
         </div>
-        <button class="botao-vermais" type="button" id="verMais">ver mais</button>
+        <button id="botaoVermais" class="text-black bg-white px-3 py-5 rounded-md cursor-pointer text-xl font-semibold mt-5 uppercase" type="button" id="verMais">ver mais</button>
 
     </section>
 
-    <section class="newsletter-bg">
-        <div class="newsletter-container">
-            <h2>newsletter</h2>
-            <h3>Recebe ofertas e novidades por email</h3>
-            <div class="cadastro-form">
-                <ul>
-                    <li><input type="text" id="nome" placeholder="Digite seu nome"></li>
-                    <li><input type="text" id="email" placeholder="Digite seu E-mail"></li>
-                    <li><button type="submit">Cadastrar</button></li>
+
+
+    <section class="bg-gray-200">
+        <div class="flex flex-col justify-center items-center">
+            <h2 class="py-7 p-0 text-6xl uppercase">newsletter</h2>
+            <h3 class="text-base mt-0 uppercase mb-7 text-gray-400">Recebe ofertas e novidades por email</h3>
+            <div class="mb-7">
+                <ul class="flex flex-wrap gap-2 m-0 pl-0">
+                    <li><input class="px-2 py-2 rounded-full w-64 bg-gray-50 placeholder:text-base" type="text" id="nome" placeholder="Digite seu nome"></li>
+                    <li><input class="px-2 py-2 rounded-full w-64 bg-gray-50 placeholder:text-base" type="text" id="email" placeholder="Digite seu E-mail"></li>
+                    <li><button class="text-base text-white w-64 font-semibold bg-green-500 px-2 py-2 rounded-full uppercase hover:bg-green-700" type="submit">Cadastrar</button></li>
                 </ul>
             </div>
-            <div class="receber-email-confirmado">
-                <input type="checkbox" name="aceitar_receber_Email" id="receber_email" checked>
-                <label for="receber_email">Aceito receber informes publicitários e promoções através newsletter de Beachwear</label>
+            <div class="mb-8">
+                <input class="mr-2 scale-150" type="checkbox" name="aceitar_receber_Email" id="receber_email" checked>
+                <label class="text-lg opacity-70" for="receber_email">Aceito receber informes publicitários e promoções através newsletter de Beachwear</label>
             </div>
         </div>
 
     </section>
 
     <footer>
-        <div class="rodape-bg">
-            <div class="rodape-container">
-                <div class="categoria-rodape">
-                    <h2>Sobre</h2>
+        <div class="bg-black h-auto flex justify-center">
+            <div class="mt-5 max-w-4xl flex justify-end items-start gap-32">
+                <div>
+                    <h2 class="text-white font-black text-4xl mb-5">Sobre</h2>
                     <ul>
-                        <li><a href="">História</a></li>
-                        <li><a href="">Trabalhe conosco</a></li>
-                        <li><a href="">conecte-se</a></li>
+                        <li class="mb-5"><a class="text-white text-xl" href="">História</a></li>
+                        <li class="mb-5"><a class="text-white text-xl" href="">Trabalhe conosco</a></li>
+                        <li class="mb-5"><a class="text-white text-xl" href="">conecte-se</a></li>
                     </ul>
                 </div>
 
-                <div class="categoria-rodape">
-                    <h2>Conta</h2>
+                <div>
+                    <h2 class="text-white font-black text-4xl mb-5">Conta</h2>
                     <ul>
-                        <li><a href="">Login</a></li>
-                        <li><a href="">Minha Conta</a></li>
-                        <li><a href="">Meus Pedidos</a></li>
-                        <li><a href="">Wishlist</a></li>
+                        <li class="mb-5"><a class="text-white text-xl" href="">Login</a></li>
+                        <li class="mb-5"><a class="text-white text-xl" href="">Minha Conta</a></li>
+                        <li class="mb-5"><a class="text-white text-xl" href="">Meus Pedidos</a></li>
+                        <li class="mb-5"><a class="text-white text-xl" href="">Wishlist</a></li>
                     </ul>
                 </div>
 
-                <div class="categoria-rodape">
-                    <h2>Atendimento</h2>
+                <div >
+                    <h2 class="text-white font-black text-4xl mb-5">Atendimento</h2>
                     <ul>
-                        <li><a href="">Fompra segura</a></li>
-                        <li><a href="">Formas de pagamento</a></li>
-                        <li><a href="">Entrega e frete</a></li>
-                        <li><a href="">Troca e pedidos</a></li>
+                        <li class="mb-5"><a class="text-white text-xl" href="">Fompra segura</a></li>
+                        <li class="mb-5"><a class="text-white text-xl" href="">Formas de pagamento</a></li>
+                        <li class="mb-5"><a class="text-white text-xl" href="">Entrega e frete</a></li>
+                        <li class="mb-5"><a class="text-white text-xl" href="">Troca e pedidos</a></li>
                     </ul>
                 </div>
             </div>
         </div>
 
-        <div class="informacoes-adicionais-bg">
-            <div class="informacoes-adicionais">
-                <div class="sac-bg">
-                    <div class="sac">
+        <div class="mt-8 bg-white h-auto flex justify-center">
+            <div class="bg-white w-[1200px] h-auto flex justify-between border-b-[0.2px] border-gray-300 border-solid">
+                <div class="flex justify-start gap-5 mb-5">
+                    <div class="uppercase">
                         <h2>sac (11) 2233-4455</h2>
                         <h2>Formas de pagamento</h2>
                     </div>
 
-                    <div class="cards-pagamento">
-                        <ul>
-                            <li class="pagamento-icone"><a href=""><img src="/css/img/visaCard.svg" alt="visa"></a></li>
-                            <li class="pagamento-icone"><a href=""><img src="/css/img/amex.svg" alt="amex"></a></li>
-                            <li class="pagamento-icone"><a href=""><img src="/css/img/mastercard.svg" alt="mastercard"></a></li>
-                            <li class="pagamento-icone"><a href=""><img src="/css/img/diners-club.svg" alt="visa"></a></li>
+                    <div>
+                        <ul class="flex justify-start gap-5 items-center">
+                            <li><a class="w-20" href=""><img src="/css/img/visaCard.svg" alt="visa"></a></li>
+                            <li><a class="w-20" href=""><img src="/css/img/amex.svg" alt="amex"></a></li>
+                            <li><a class="w-20" href=""><img src="/css/img/mastercard.svg" alt="mastercard"></a></li>
+                            <li><a class="w-20" href=""><img src="/css/img/diners-club.svg" alt="visa"></a></li>
                         </ul>
                     </div>
                 </div>
 
-                <div class="site-seguro">
+                <div>
                     <a href=""><img src="css/img/desbloquear.svg" alt=""></a>
                 </div>
             </div>
         </div>
-        <div class="endereco-bg">
-            <div class="endereco">
+        <div class="flex justify-center py-8">
+            <div class="max-w-[1200px] text-center">
                 <p>Atendimento de segunda a quinta-feira das 09:00 às 18:00 e sexta-feira até as 17:00, exceto feriados - Avenida das Flores, 123   sala 10 - Bairro Jardim Alegre Cotia - São Paulo, CEP: 06700-000 - Florescer Artigos para o Lar Ltda - CNPJ: 12.345.678/0001-90</p>
             </div>
         </div>
-    </footer>
+    </footer> 
 
-   
-
-
-
-
-    
+           
     <script src="~/js/style.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
