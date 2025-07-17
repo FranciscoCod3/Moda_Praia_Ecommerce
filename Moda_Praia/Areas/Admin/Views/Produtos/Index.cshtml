@@ -1,40 +1,40 @@
 ﻿@model IEnumerable<Moda_Praia.Models.Produto>
 
-<section class="produtos-grid-bg">
+<section class="flex justify-center">
     <form action="/" method="post">
-        <div class="table-container">
+        <div class="grid auto-cols-fr max-w-[75rem] border-y-2 border-solid border-black">
         
-            <div class="header-produto">
-                 <h2>Lista de Produtos</h2>
-                  <a asp-area="Admin" asp-controller="Produtos" asp-action="Create" class="botao-adicionar-admin">Cadastrar</a>
+            <div class="flex justify-between items-center mt-2  mb-2">
+                <h2 class="text-xl">Lista de Produtos</h2>
+                <a asp-area="Admin" asp-controller="Produtos" asp-action="Create" class=" text-xl text-white border-2 border-solid rounded-md border-white px-3 py-2 bg-green-600 uppercase">Cadastrar</a>
             </div>
-            <table class="tabela-produtos">
-                <thead class="tabela-header">
-                    <tr class="tabela-produtos-header">
-                        <th>@Html.DisplayNameFor(Model => Model.Id)</th>
-                        <th>@Html.DisplayNameFor(Model => Model.Nome)</th>
-                        <th>@Html.DisplayNameFor(Model => Model.PrecoVenda)</th>
-                        <th>@Html.DisplayNameFor(Model => Model.Categoria)</th>
-                        <th>@Html.DisplayNameFor(Model => Model.CorBase)</th>
-                        <th>@Html.DisplayNameFor(Model => Model.QuantidadeEstoque)</th>
-                        <th>Ações</th>
+            <table class="border-t-2 border-solid border-black border-separate border-spacing-1">
+                <thead>
+                    <tr class="text-base">
+                        <th class="text-left">@Html.DisplayNameFor(Model => Model.Id)</th>
+                        <th class="text-left">@Html.DisplayNameFor(Model => Model.Nome)</th>
+                        <th class="text-left">@Html.DisplayNameFor(Model => Model.PrecoVenda)</th>
+                        <th class="text-left">@Html.DisplayNameFor(Model => Model.Categoria)</th>
+                        <th class="text-left">@Html.DisplayNameFor(Model => Model.CorBase)</th>
+                        <th class="text-left">@Html.DisplayNameFor(Model => Model.QuantidadeEstoque)</th>
+                        <th class="text-left">Ações</th>
                     </tr>
                 </thead>
 
                 <tbody >
                     @foreach (var produto in Model)
                     {
-                        <tr class="tabela-produtos-data">
+                            <tr class="even:bg-slate-100 odd:bg-slate-200">
                             <td>@produto.Id</td>
                             <td>@produto.Nome</td>
                             <td>@produto.PrecoVenda</td>
                             <td>@produto.Categoria</td>
                             <td>@produto.CorBase</td>
                             <td>@produto.QuantidadeEstoque</td>
-                            <td class="itens-link-acoes">
-                                <a href="#" id="detalhes">Detalhes</a>
-                                <a href="#" id="editar">Editar</a>
-                                <a href="#" id="excluir">Excluir</a>
+                            <td class="bg-white flex gap-1">
+                                <a class="px-2  border border-solid border-2 border-gray-200 text-white uppercase bg-blue-500" href="#" id="detalhes">Detalhes</a>
+                                <a class="px-2 border border-solid border-2 border-gray-200 text-black uppercase bg-yellow-300" href="#" id="editar">Editar</a>
+                                <a class="px-2 border border-solid border-2 border-gray-200 text-white uppercase bg-red-500" href="#" id="excluir">Excluir</a>
                            </td>
                         </tr>
                     }
