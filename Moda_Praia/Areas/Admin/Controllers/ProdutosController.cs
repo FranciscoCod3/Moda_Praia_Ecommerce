@@ -27,7 +27,6 @@ namespace Moda_Praia.Areas.Admin.Controllers
 
         [HttpPost]
         [AutoValidateAntiforgeryToken]
-
         public IActionResult Create(ProdutoViewModel produtoViewModel)
         {
             if (!ModelState.IsValid)

@@ -5,8 +5,7 @@ namespace Moda_Praia.Areas.Admin.Models
 {
     public class ProdutoViewModel
     {
-        // O Id não é necessário para criação, mas pode ser útil para edição.
-        // Se a ViewModel for usada apenas para criação, você pode removê-lo.
+        
         [DisplayName("Código")]
         public int Id { get; set; }
 
@@ -24,7 +23,7 @@ namespace Moda_Praia.Areas.Admin.Models
         [Range(0.01, double.MaxValue, ErrorMessage = "O preço de custo deve ser maior que zero.")]
         [DisplayName("Preço de Custo")]
         public decimal PrecoCusto { get; set; }
-
+        [Required(ErrorMessage = "A descrição do produto é obrigatório.")]
         [StringLength(500, ErrorMessage = "A descrição não pode exceder 500 caracteres.")]
         [DisplayName("Descrição do Produto")]
         public string Descricao { get; set; }
