@@ -45,12 +45,7 @@
             <span asp-validation-for="Categoria" class="text-base text-red-500 h-[1em]"></span>
         </div>
 
-        <div class="mx-2 flex flex-col mt-2">
-            <label asp-for="urlName" class="mb-1"></label>
-            <input asp-for="urlName" class="border-[0.25px] w-48 rounded-md border-solid border-black" />
-            <span asp-validation-for="urlName" class="text-base text-red-500 h-[1em]"></span>
-        </div>
-
+       
         <div class="mx-2 flex flex-col mt-2">
             <label asp-for="QuantidadeEstoque" class="mb-1"></label>
             <input asp-for="QuantidadeEstoque" class="border-[0.25px] w-48 rounded-md border-solid border-black" />
@@ -61,6 +56,13 @@
             <label asp-for="Descricao" class="mb-1"></label>
             <textarea asp-for="Descricao" class="border-[0.25px] max-w-6xl h-32 rounded-md border-solid border-black"></textarea>
             <span asp-validation-for="Descricao" class="text-base text-red-500 h-[1em]"></span>
+        </div>
+
+        <div class="mx-2 flex flex-col mt-2">
+            <label asp-for="ImagemRoupa" class="mb-1"></label>
+            <input type="file" asp-for="ImagemRoupa" />
+            <span asp-validation-for="ImagemRoupa" class="text-base text-red-500 h-[1em]"></span>
+
         </div>
 
         <div class="ml-2 mt-4 col-start-2 flex justify-end items-center gap-2 mr-2 mb-2">
