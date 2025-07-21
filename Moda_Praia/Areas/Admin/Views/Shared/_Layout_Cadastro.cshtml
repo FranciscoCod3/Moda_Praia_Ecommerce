@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Moda_Praia</title>
+    <link rel="stylesheet" href="/css/output.css" asp-append-version="true" />
+   
+</head>
+<body>
+    <Header >
+      
+        <div >
+            <div class=" text-2xl max-w-6xl gap-[1.5rem] flex justify-end flex-wrap items-center mx-auto py-[1rem]">
+
+                <div><a class="text-black" href="#">Moda Praia</a></div>
+                <div>
+                    <input class="min-w-[30ch] h-auto text-base p-[0.5rem] rounded-full border-2  border-black   bg-transparent placeholder-black   border-black" type="text" placeholder="Buscar Produtos">
+                </div>
+                <nav>
+                    <ul class="flex flex-wrap items-center h-auto gap-x-4">
+                        <li class="text-black"><a href="#">Favoritos</a></li>
+                        <li class="text-black"><a href="#">Login</a></li>
+                        <li class="text-black"><a href="#">Carrinho</a></li>
+                        <li class="text-black"><a asp-area="Admin" asp-controller="Produtos" asp-action="Index">Admin</a></li>
+                    </ul>
+                </nav>
+                            
+
+
+            </div>
+
+        </div>
+    </Header>
+    
+    @RenderBody()        
+    
+
+
+    <footer>       
+
+       
+        <div class="flex justify-center py-8">
+            <div class="max-w-[1200px] text-center">
+                <p>Atendimento de segunda a quinta-feira das 09:00 às 18:00 e sexta-feira até as 17:00, exceto feriados - Avenida das Flores, 123   sala 10 - Bairro Jardim Alegre Cotia - São Paulo, CEP: 06700-000 - Florescer Artigos para o Lar Ltda - CNPJ: 12.345.678/0001-90</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="~/js/style.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

@@ -8,7 +8,7 @@
                 <h2 class="text-xl">Lista de Produtos</h2>
                 <a asp-area="Admin" asp-controller="Produtos" asp-action="Create" class=" text-xl text-white border-2 border-solid rounded-md border-white px-3 py-2 bg-green-600 uppercase">Cadastrar</a>
             </div>
-            <table class="border-t-2 border-solid border-black border-separate border-spacing-1">
+            <table class="border-t-2 border-solid border-black border-separate border-spacing-[2px]">
                 <thead>
                     <tr class="text-base">
                         <th class="text-left">@Html.DisplayNameFor(Model => Model.Id)</th>
@@ -32,7 +32,7 @@
                             <td>@produto.CorBase</td>
                             <td>@produto.QuantidadeEstoque</td>
                             <td class="bg-white flex gap-1">
-                                <a class="px-2  border border-solid border-2 border-gray-200 text-white uppercase bg-blue-500" href="#" id="detalhes">Detalhes</a>
+                                <a class="px-2 border border-solid border-2 border-gray-200 text-white uppercase bg-blue-500" href="#" id="detalhes">Detalhes</a>
                                 <a class="px-2 border border-solid border-2 border-gray-200 text-black uppercase bg-yellow-300" href="#" id="editar">Editar</a>
                                 <a class="px-2 border border-solid border-2 border-gray-200 text-white uppercase bg-red-500" href="#" id="excluir">Excluir</a>
                            </td>
