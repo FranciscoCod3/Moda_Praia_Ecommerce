@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Moda_Praia.Data;
 
@@ -10,9 +11,11 @@ using Moda_Praia.Data;
 namespace Moda_Praia.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250721192242_tabelaImagem_Produto_Precisao")]
+    partial class tabelaImagem_Produto_Precisao
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -272,7 +275,7 @@ namespace Moda_Praia.Migrations
             modelBuilder.Entity("Moda_Praia.Models.ProdutoImagem", b =>
                 {
                     b.HasOne("Moda_Praia.Models.Produto", "Produto")
-                        .WithMany("ProdutoImagens")
+                        .WithMany("produtoImagems")
                         .HasForeignKey("ProdutoId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -282,7 +285,7 @@ namespace Moda_Praia.Migrations
 
             modelBuilder.Entity("Moda_Praia.Models.Produto", b =>
                 {
-                    b.Navigation("ProdutoImagens");
+                    b.Navigation("produtoImagems");
                 });
 #pragma warning restore 612, 618
         }

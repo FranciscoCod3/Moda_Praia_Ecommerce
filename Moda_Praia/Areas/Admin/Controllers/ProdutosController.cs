@@ -32,40 +32,10 @@ namespace Moda_Praia.Areas.Admin.Controllers
         [AutoValidateAntiforgeryToken]
         public async Task<IActionResult>  Create(ProdutoViewModel produtoViewModel)
         {
-            if (!ModelState.IsValid || produtoViewModel.ImagemRoupa == null || produtoViewModel.ImagemRoupa.Length <= 0)
+            if (!ModelState.IsValid || produtoViewModel.ImagensRoupa == null || !produtoViewModel.ImagensRoupa.Any(x => x.Length >0))
             {
                 return View(produtoViewModel);
             }
-
-            // 1. Gerar um nome de arquivo único
-            var fileName = Path.GetFileNameWithoutExtension(produtoViewModel.ImagemRoupa.FileName);
-            var extension = Path.GetExtension(produtoViewModel.ImagemRoupa.FileName);
-            var uniqueFileName = Guid.NewGuid().ToString() + produtoViewModel.Categoria + extension ;
-
-            // 2. Definir o subdiretório para salvar as imagens (opcional, mas recomendado)
-            var uploadsFolder = Path.Combine(_webHost.WebRootPath, "images", produtoViewModel.Categoria);
-
-            // Certifique-se de que o diretório exista
-            if (!Directory.Exists(uploadsFolder))
-            {
-                Directory.CreateDirectory(uploadsFolder);
-            }
-
-            // 3. Montar o caminho completo para salvar o arquivo físico
-            var filePath = Path.Combine(uploadsFolder, uniqueFileName);
-
-            // 4. Montar o caminho relativo para salvar no banco de dados
-            // Este é o caminho que você usaria em um <img src="..."> no HTML
-            var relativePathForDb = Path.Combine("images", produtoViewModel.Categoria, uniqueFileName).Replace("\\", "/");
-            
-
-
-            // Salvar o arquivo fisicamente
-            using (var fileStream = new FileStream(filePath, FileMode.Create))
-            {
-                await produtoViewModel.ImagemRoupa.CopyToAsync(fileStream); // Use CopyToAsync para melhor performance
-            }
-
 
             var produtoBranco = new Produto
             {
@@ -76,10 +46,50 @@ namespace Moda_Praia.Areas.Admin.Controllers
                 Categoria = produtoViewModel.Categoria,
                 QuantidadeEstoque = produtoViewModel.QuantidadeEstoque,
                 CorBase = produtoViewModel.CorBase,
-                urlName = relativePathForDb
-
-
+                
             };
+
+            // 1. Lista para armazenar os caminhos das imagens
+            var imageUrls = new List<string>();
+
+            // 2. Definir o subdiretório para salvar as imagens (opcional, mas recomendado)
+            var uploadsFolder = Path.Combine(_webHost.WebRootPath, "images", produtoViewModel.Categoria);
+
+            // Certifique-se de que o diretório exista
+            if (!Directory.Exists(uploadsFolder))
+            {
+                Directory.CreateDirectory(uploadsFolder);
+            }
+
+
+
+            foreach (var file in produtoViewModel.ImagensRoupa)
+            {
+                if (file != null && file.Length > 0)
+                {
+                    var fileName = Path.GetFileNameWithoutExtension(file.FileName);
+                    var extension = Path.GetExtension(file.FileName);
+                    var uniqueFileName = Guid.NewGuid().ToString() + produtoViewModel.Categoria + extension;
+                    var filePath = Path.Combine(uploadsFolder, uniqueFileName);
+                    var relativePathForDb = Path.Combine("images", produtoViewModel.Categoria, uniqueFileName).Replace("\\", "/");
+
+                    using (var fileStream = new FileStream(filePath, FileMode.Create))
+                    {
+                        await file.CopyToAsync(fileStream); // Use CopyToAsync para melhor performance
+                    }
+                    imageUrls.Add(relativePathForDb);
+
+                }
+
+            }
+
+            produtoBranco.ProdutoImagens = new List<ProdutoImagem>();
+
+            foreach (var url in imageUrls)
+            {
+                produtoBranco.ProdutoImagens.Add(new ProdutoImagem { UrlImagem = url });
+            }                             
+
             _context.Add(produtoBranco);
             _context.SaveChanges();
             return RedirectToAction("Index");

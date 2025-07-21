@@ -197,6 +197,14 @@ namespace Moda_Praia.Data
                     CorBase = "Branco com Listras Azuis"
                 }
             );
+
+             modelBuilder.Entity<Produto>()
+            .Property(p => p.PrecoCusto)
+            .HasPrecision(18, 2);
+
+            modelBuilder.Entity<Produto>()
+           .Property(p => p.PrecoVenda)
+           .HasPrecision(18, 2);
         }
     }
 }

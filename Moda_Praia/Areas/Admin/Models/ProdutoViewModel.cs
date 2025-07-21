@@ -34,7 +34,7 @@ namespace Moda_Praia.Areas.Admin.Models
         public string Categoria { get; set; }
 
         [DisplayName("Fotos")]
-        public IFormFile? ImagemRoupa { get; set; }
+        public IEnumerable< IFormFile> ? ImagensRoupa { get; set; }
 
         [Required(ErrorMessage = "A quantidade em estoque é obrigatória.")]
         [Range(0, int.MaxValue, ErrorMessage = "A quantidade em estoque não pode ser negativa.")]
