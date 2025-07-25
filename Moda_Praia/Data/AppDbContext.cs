@@ -23,8 +23,7 @@ namespace Moda_Praia.Data
                     PrecoVenda = 79.90m,
                     PrecoCusto = 35.50m,
                     Descricao = "Biquíni cortininha com estampa floral vibrante, ideal para os dias de sol.",
-                    Categoria = "Biquínis",
-                    urlName = "biquini-cortininha-floral",
+                    Categoria = "Biquínis",                   
                     QuantidadeEstoque = 50,
                     CorBase = "Multicolorido"
                 },
@@ -35,8 +34,7 @@ namespace Moda_Praia.Data
                     PrecoVenda = 99.90m,
                     PrecoCusto = 45.00m,
                     Descricao = "Maiô estilo engana mamãe em tecido liso azul, elegante e confortável.",
-                    Categoria = "Maiôs",
-                    urlName = "maio-engana-mamae-azul",
+                    Categoria = "Maiôs",                    
                     QuantidadeEstoque = 30,
                     CorBase = "Azul"
                 },
@@ -47,8 +45,7 @@ namespace Moda_Praia.Data
                     PrecoVenda = 129.90m,
                     PrecoCusto = 60.00m,
                     Descricao = "Saída de praia longa em renda branca, perfeita para um look sofisticado.",
-                    Categoria = "Saídas de Praia",
-                    urlName = "saida-praia-longa-renda-branca",
+                    Categoria = "Saídas de Praia",                    
                     QuantidadeEstoque = 25,
                     CorBase = "Branco"
                 },
@@ -59,8 +56,7 @@ namespace Moda_Praia.Data
                     PrecoVenda = 59.90m,
                     PrecoCusto = 28.00m,
                     Descricao = "Sungão modelo boxer em tecido liso preto, confortável e com bom ajuste.",
-                    Categoria = "Sungas",
-                    urlName = "sungao-boxer-preto",
+                    Categoria = "Sungas",                    
                     QuantidadeEstoque = 40,
                     CorBase = "Preto"
                 },
@@ -71,8 +67,7 @@ namespace Moda_Praia.Data
                     PrecoVenda = 89.90m,
                     PrecoCusto = 40.00m,
                     Descricao = "Biquíni tomara que caia com estampa de poá clássica e charmosa.",
-                    Categoria = "Biquínis",
-                    urlName = "biquini-tomara-que-caia-poa",
+                    Categoria = "Biquínis",                    
                     QuantidadeEstoque = 35,
                     CorBase = "Branco com Poá Preto"
                 },
@@ -83,8 +78,7 @@ namespace Moda_Praia.Data
                     PrecoVenda = 109.90m,
                     PrecoCusto = 50.00m,
                     Descricao = "Maiô com corte cavado e estampa tropical vibrante, para um visual moderno.",
-                    Categoria = "Maiôs",
-                    urlName = "maio-cavado-estampado-tropical",
+                    Categoria = "Maiôs",                    
                     QuantidadeEstoque = 20,
                     CorBase = "Multicolorido"
                 },
@@ -95,8 +89,7 @@ namespace Moda_Praia.Data
                     PrecoVenda = 99.90m,
                     PrecoCusto = 45.00m,
                     Descricao = "Saída de praia curta em crochê, leve e estilosa para os dias quentes.",
-                    Categoria = "Saídas de Praia",
-                    urlName = "saida-praia-curta-croche",
+                    Categoria = "Saídas de Praia",                   
                     QuantidadeEstoque = 30,
                     CorBase = "Bege"
                 },
@@ -107,8 +100,7 @@ namespace Moda_Praia.Data
                     PrecoVenda = 49.90m,
                     PrecoCusto = 22.00m,
                     Descricao = "Sungão modelo slip com estampa listrada, confortável e com ótimo caimento.",
-                    Categoria = "Sungas",
-                    urlName = "sungao-slip-listrado",
+                    Categoria = "Sungas",                    
                     QuantidadeEstoque = 55,
                     CorBase = "Azul com Listras Brancas"
                 },
@@ -119,8 +111,7 @@ namespace Moda_Praia.Data
                     PrecoVenda = 94.90m,
                     PrecoCusto = 42.00m,
                     Descricao = "Biquíni modelo cropped em tecido liso vermelho, moderno e estiloso.",
-                    Categoria = "Biquínis",
-                    urlName = "biquini-cropped-vermelho",
+                    Categoria = "Biquínis",                    
                     QuantidadeEstoque = 45,
                     CorBase = "Vermelho"
                 },
@@ -131,8 +122,7 @@ namespace Moda_Praia.Data
                     PrecoVenda = 119.90m,
                     PrecoCusto = 55.00m,
                     Descricao = "Maiô plus size com estampa floral em tons escuros, elegante e confortável.",
-                    Categoria = "Maiôs",
-                    urlName = "maio-plus-size-floral-escuro",
+                    Categoria = "Maiôs",                  
                     QuantidadeEstoque = 15,
                     CorBase = "Preto com Flores"
                 },
@@ -144,7 +134,6 @@ namespace Moda_Praia.Data
                     PrecoCusto = 52.00m,
                     Descricao = "Saída de praia modelo vestido com estampa colorida, prático e charmoso.",
                     Categoria = "Saídas de Praia",
-                    urlName = "saida-praia-vestido-estampado",
                     QuantidadeEstoque = 28,
                     CorBase = "Estampado"
                 },
@@ -155,8 +144,7 @@ namespace Moda_Praia.Data
                     PrecoVenda = 64.90m,
                     PrecoCusto = 30.00m,
                     Descricao = "Sungão com estampa abstrata moderna, para um visual diferenciado.",
-                    Categoria = "Sungas",
-                    urlName = "sungao-estampado-abstrato",
+                    Categoria = "Sungas",                    
                     QuantidadeEstoque = 38,
                     CorBase = "Multicolorido"
                 },
@@ -167,8 +155,7 @@ namespace Moda_Praia.Data
                     PrecoVenda = 99.90m,
                     PrecoCusto = 45.00m,
                     Descricao = "Biquíni modelo hot pant em tecido liso preto, elegante e com bom caimento.",
-                    Categoria = "Biquínis",
-                    urlName = "biquini-hot-pant-preto",
+                    Categoria = "Biquínis",                    
                     QuantidadeEstoque = 42,
                     CorBase = "Preto"
                 },
@@ -179,8 +166,7 @@ namespace Moda_Praia.Data
                     PrecoVenda = 104.90m,
                     PrecoCusto = 48.00m,
                     Descricao = "Maiô com bojo em tecido liso verde água, confortável e com bom suporte.",
-                    Categoria = "Maiôs",
-                    urlName = "maio-com-bojo-verde-agua",
+                    Categoria = "Maiôs",                    
                     QuantidadeEstoque = 22,
                     CorBase = "Verde Água"
                 },
@@ -191,8 +177,7 @@ namespace Moda_Praia.Data
                     PrecoVenda = 109.90m,
                     PrecoCusto = 50.00m,
                     Descricao = "Saída de praia modelo camisa com estampa listrada, moderna e versátil.",
-                    Categoria = "Saídas de Praia",
-                    urlName = "saida-praia-camisa-listrada",
+                    Categoria = "Saídas de Praia",                    
                     QuantidadeEstoque = 33,
                     CorBase = "Branco com Listras Azuis"
                 }

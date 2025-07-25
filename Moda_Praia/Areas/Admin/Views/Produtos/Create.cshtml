@@ -9,7 +9,7 @@
 <div class="w-[900px] mx-auto">
     <h1 class="ml-2 text-2xl mb-4">Adicionar Novo Produto</h1>
     
-    <form class="grid grid-cols-2 gap-1 border-2 border-solid bg-gray-100 rounded-md" asp-action="Create" method="post" enctype="multipart/form-data">
+    <form class="grid grid-cols-2 gap-1 border-2 border-solid bg-gray-50 rounded-md" asp-action="Create" method="post" enctype="multipart/form-data">
             
         <div class="mx-2 flex flex-col mt-2">
             <label asp-for="Nome" class="mb-1"></label>
@@ -58,12 +58,28 @@
             <span asp-validation-for="Descricao" class="text-base text-red-500 h-[1em]"></span>
         </div>
 
-        <div class="mx-2 flex flex-col mt-2">
-            <label asp-for="ImagensRoupa" class="mb-1"></label>
-            <input type="file" multiple asp-for="ImagensRoupa" />
-            <span asp-validation-for="ImagensRoupa" class="text-base text-red-500 h-[1em]"></span>
+        <div>
+            <h2 class="mx-2">Fotos</h2>
+            <div class="mx-2 flex flex-col mt-2">
+                <label  class="mb-1"></label>
+                <input type="file" asp-for="ImagensRoupa" />
+                <span asp-validation-for="ImagensRoupa" class="text-base text-red-500 h-[1em]"></span>
+            </div>
 
+            <div class="mx-2 flex flex-col mt-2">
+                <label class="mb-1"></label>
+                <input type="file" asp-for="ImagensRoupa" />
+                <span asp-validation-for="ImagensRoupa" class="text-base text-red-500 h-[1em]"></span>
+            </div>
+
+
+            <div class="mx-2 flex flex-col mt-2">
+                <label  class="mb-1"></label>
+                <input type="file" asp-for="ImagensRoupa" />
+                <span asp-validation-for="ImagensRoupa" class="text-base text-red-500 h-[1em]"></span>
+            </div>
         </div>
+        
 
         <div class="ml-2 mt-4 col-start-2 flex justify-end items-center gap-2 mr-2 mb-2">
 

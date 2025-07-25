@@ -4,6 +4,7 @@
     {
         public int Id { get; set; }
         public string UrlImagem {get; set;}
+        
         public int ProdutoId {get; set;}
         public Produto Produto {get; set;}
 

@@ -14,12 +14,10 @@ namespace Moda_Praia.Models
         [DisplayName("Descrição do Produto")]
         public string Descricao { get; set; }
         public string Categoria { get; set; }
-        public string urlName { get; set; }
         [DisplayName("Qtd")]
         public int? QuantidadeEstoque { get; set; }
         [DisplayName("Cor Principal")]
         public string CorBase { get; set; }
-
         public List<ProdutoImagem>? ProdutoImagens { get; set; }
     }
 }
