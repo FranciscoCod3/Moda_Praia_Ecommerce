@@ -21,6 +21,22 @@ namespace Moda_Praia.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("Moda_Praia.Models.Categoria", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Nome")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Categorias");
+                });
+
             modelBuilder.Entity("Moda_Praia.Models.Produto", b =>
                 {
                     b.Property<int>("Id")
@@ -29,20 +45,16 @@ namespace Moda_Praia.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Categoria")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int?>("CategoriaId")
+                        .HasColumnType("int");
 
                     b.Property<string>("CorBase")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Descricao")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Nome")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("PrecoCusto")
@@ -58,13 +70,15 @@ namespace Moda_Praia.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("CategoriaId");
+
                     b.ToTable("Produtos");
 
                     b.HasData(
                         new
                         {
                             Id = 1,
-                            Categoria = "Biquínis",
+                            CategoriaId = 1,
                             CorBase = "Multicolorido",
                             Descricao = "Biquíni cortininha com estampa floral vibrante, ideal para os dias de sol.",
                             Nome = "Biquíni Cortininha Estampado Floral",
@@ -75,7 +89,7 @@ namespace Moda_Praia.Migrations
                         new
                         {
                             Id = 2,
-                            Categoria = "Maiôs",
+                            CategoriaId = 2,
                             CorBase = "Azul",
                             Descricao = "Maiô estilo engana mamãe em tecido liso azul, elegante e confortável.",
                             Nome = "Maiô Engana Mamãe Liso Azul",
@@ -86,7 +100,7 @@ namespace Moda_Praia.Migrations
                         new
                         {
                             Id = 3,
-                            Categoria = "Saídas de Praia",
+                            CategoriaId = 3,
                             CorBase = "Branco",
                             Descricao = "Saída de praia longa em renda branca, perfeita para um look sofisticado.",
                             Nome = "Saída de Praia Longa Renda Branca",
@@ -97,7 +111,7 @@ namespace Moda_Praia.Migrations
                         new
                         {
                             Id = 4,
-                            Categoria = "Sungas",
+                            CategoriaId = 1,
                             CorBase = "Preto",
                             Descricao = "Sungão modelo boxer em tecido liso preto, confortável e com bom ajuste.",
                             Nome = "Sungão Boxer Liso Preto",
@@ -108,7 +122,7 @@ namespace Moda_Praia.Migrations
                         new
                         {
                             Id = 5,
-                            Categoria = "Biquínis",
+                            CategoriaId = 1,
                             CorBase = "Branco com Poá Preto",
                             Descricao = "Biquíni tomara que caia com estampa de poá clássica e charmosa.",
                             Nome = "Biquíni Tomara que Caia Poá",
@@ -119,7 +133,7 @@ namespace Moda_Praia.Migrations
                         new
                         {
                             Id = 6,
-                            Categoria = "Maiôs",
+                            CategoriaId = 2,
                             CorBase = "Multicolorido",
                             Descricao = "Maiô com corte cavado e estampa tropical vibrante, para um visual moderno.",
                             Nome = "Maiô Cavado Estampado Tropical",
@@ -130,7 +144,7 @@ namespace Moda_Praia.Migrations
                         new
                         {
                             Id = 7,
-                            Categoria = "Saídas de Praia",
+                            CategoriaId = 3,
                             CorBase = "Bege",
                             Descricao = "Saída de praia curta em crochê, leve e estilosa para os dias quentes.",
                             Nome = "Saída de Praia Curta Crochê",
@@ -141,7 +155,7 @@ namespace Moda_Praia.Migrations
                         new
                         {
                             Id = 8,
-                            Categoria = "Sungas",
+                            CategoriaId = 1,
                             CorBase = "Azul com Listras Brancas",
                             Descricao = "Sungão modelo slip com estampa listrada, confortável e com ótimo caimento.",
                             Nome = "Sungão Slip Listrado",
@@ -152,7 +166,7 @@ namespace Moda_Praia.Migrations
                         new
                         {
                             Id = 9,
-                            Categoria = "Biquínis",
+                            CategoriaId = 1,
                             CorBase = "Vermelho",
                             Descricao = "Biquíni modelo cropped em tecido liso vermelho, moderno e estiloso.",
                             Nome = "Biquíni Cropped Liso Vermelho",
@@ -163,7 +177,7 @@ namespace Moda_Praia.Migrations
                         new
                         {
                             Id = 10,
-                            Categoria = "Maiôs",
+                            CategoriaId = 2,
                             CorBase = "Preto com Flores",
                             Descricao = "Maiô plus size com estampa floral em tons escuros, elegante e confortável.",
                             Nome = "Maiô Plus Size Floral Escuro",
@@ -174,7 +188,7 @@ namespace Moda_Praia.Migrations
                         new
                         {
                             Id = 11,
-                            Categoria = "Saídas de Praia",
+                            CategoriaId = 3,
                             CorBase = "Estampado",
                             Descricao = "Saída de praia modelo vestido com estampa colorida, prático e charmoso.",
                             Nome = "Saída de Praia Vestido Estampado",
@@ -185,7 +199,7 @@ namespace Moda_Praia.Migrations
                         new
                         {
                             Id = 12,
-                            Categoria = "Sungas",
+                            CategoriaId = 1,
                             CorBase = "Multicolorido",
                             Descricao = "Sungão com estampa abstrata moderna, para um visual diferenciado.",
                             Nome = "Sungão Estampado Abstrato",
@@ -196,7 +210,7 @@ namespace Moda_Praia.Migrations
                         new
                         {
                             Id = 13,
-                            Categoria = "Biquínis",
+                            CategoriaId = 1,
                             CorBase = "Preto",
                             Descricao = "Biquíni modelo hot pant em tecido liso preto, elegante e com bom caimento.",
                             Nome = "Biquíni Hot Pant Liso Preto",
@@ -207,7 +221,7 @@ namespace Moda_Praia.Migrations
                         new
                         {
                             Id = 14,
-                            Categoria = "Maiôs",
+                            CategoriaId = 2,
                             CorBase = "Verde Água",
                             Descricao = "Maiô com bojo em tecido liso verde água, confortável e com bom suporte.",
                             Nome = "Maiô com Bojo Liso Verde Água",
@@ -218,7 +232,7 @@ namespace Moda_Praia.Migrations
                         new
                         {
                             Id = 15,
-                            Categoria = "Saídas de Praia",
+                            CategoriaId = 3,
                             CorBase = "Branco com Listras Azuis",
                             Descricao = "Saída de praia modelo camisa com estampa listrada, moderna e versátil.",
                             Nome = "Saída de Praia Camisa Listrada",
@@ -250,6 +264,15 @@ namespace Moda_Praia.Migrations
                     b.ToTable("ProdutoImagem");
                 });
 
+            modelBuilder.Entity("Moda_Praia.Models.Produto", b =>
+                {
+                    b.HasOne("Moda_Praia.Models.Categoria", "Categoria")
+                        .WithMany("Produtos")
+                        .HasForeignKey("CategoriaId");
+
+                    b.Navigation("Categoria");
+                });
+
             modelBuilder.Entity("Moda_Praia.Models.ProdutoImagem", b =>
                 {
                     b.HasOne("Moda_Praia.Models.Produto", "Produto")
@@ -259,6 +282,11 @@ namespace Moda_Praia.Migrations
                         .IsRequired();
 
                     b.Navigation("Produto");
+                });
+
+            modelBuilder.Entity("Moda_Praia.Models.Categoria", b =>
+                {
+                    b.Navigation("Produtos");
                 });
 
             modelBuilder.Entity("Moda_Praia.Models.Produto", b =>

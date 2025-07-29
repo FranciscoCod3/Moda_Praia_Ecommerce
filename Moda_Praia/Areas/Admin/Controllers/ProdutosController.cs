@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Moda_Praia.Areas.Admin.Models;
 using Moda_Praia.Data;
 using Moda_Praia.Models;
@@ -25,6 +26,7 @@ namespace Moda_Praia.Areas.Admin.Controllers
 
         public IActionResult Create()
         {
+            
             return View();
         }
 
@@ -42,8 +44,7 @@ namespace Moda_Praia.Areas.Admin.Controllers
                 Nome = produtoViewModel.Nome,
                 PrecoVenda = produtoViewModel.PrecoVenda,
                 PrecoCusto = produtoViewModel.PrecoCusto,
-                Descricao = produtoViewModel.Descricao,
-                Categoria = produtoViewModel.Categoria,
+                Descricao = produtoViewModel.Descricao,                
                 QuantidadeEstoque = produtoViewModel.QuantidadeEstoque,
                 CorBase = produtoViewModel.CorBase,
                 
@@ -94,6 +95,20 @@ namespace Moda_Praia.Areas.Admin.Controllers
             _context.SaveChanges();
             return RedirectToAction("Index");
         }
-        
+
+        public IActionResult Detalhes(int? id)
+        {
+            if(id == null || id <= 0)
+            {
+                return View();
+            }
+            var produtobranco = _context.Produtos.
+                Include(x => x.ProdutoImagens).
+                FirstOrDefault(x => x.Id == id);
+            
+            return View(produtobranco);
+        }
+
     }
 }
+    

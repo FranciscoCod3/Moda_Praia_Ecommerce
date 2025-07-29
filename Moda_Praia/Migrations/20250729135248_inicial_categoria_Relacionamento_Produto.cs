@@ -5,130 +5,149 @@
 namespace Moda_Praia.Migrations
 {
     /// <inheritdoc />
-    public partial class Delete_UrlName_tabela_Produtos : Migration
+    public partial class inicial_categoria_Relacionamento_Produto : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropColumn(
-                name: "urlName",
-                table: "Produtos");
-        }
-
-        /// <inheritdoc />
-        protected override void Down(MigrationBuilder migrationBuilder)
-        {
-            migrationBuilder.AddColumn<string>(
-                name: "urlName",
+            migrationBuilder.AddColumn<int>(
+                name: "CategoriaId",
                 table: "Produtos",
-                type: "nvarchar(max)",
-                nullable: false,
-                defaultValue: "");
+                type: "int",
+                nullable: true);
 
             migrationBuilder.UpdateData(
                 table: "Produtos",
                 keyColumn: "Id",
                 keyValue: 1,
-                column: "urlName",
-                value: "biquini-cortininha-floral");
+                column: "CategoriaId",
+                value: 1);
 
             migrationBuilder.UpdateData(
                 table: "Produtos",
                 keyColumn: "Id",
                 keyValue: 2,
-                column: "urlName",
-                value: "maio-engana-mamae-azul");
+                column: "CategoriaId",
+                value: 2);
 
             migrationBuilder.UpdateData(
                 table: "Produtos",
                 keyColumn: "Id",
                 keyValue: 3,
-                column: "urlName",
-                value: "saida-praia-longa-renda-branca");
+                column: "CategoriaId",
+                value: 3);
 
             migrationBuilder.UpdateData(
                 table: "Produtos",
                 keyColumn: "Id",
                 keyValue: 4,
-                column: "urlName",
-                value: "sungao-boxer-preto");
+                column: "CategoriaId",
+                value: 1);
 
             migrationBuilder.UpdateData(
                 table: "Produtos",
                 keyColumn: "Id",
                 keyValue: 5,
-                column: "urlName",
-                value: "biquini-tomara-que-caia-poa");
+                column: "CategoriaId",
+                value: 1);
 
             migrationBuilder.UpdateData(
                 table: "Produtos",
                 keyColumn: "Id",
                 keyValue: 6,
-                column: "urlName",
-                value: "maio-cavado-estampado-tropical");
+                column: "CategoriaId",
+                value: 2);
 
             migrationBuilder.UpdateData(
                 table: "Produtos",
                 keyColumn: "Id",
                 keyValue: 7,
-                column: "urlName",
-                value: "saida-praia-curta-croche");
+                column: "CategoriaId",
+                value: 3);
 
             migrationBuilder.UpdateData(
                 table: "Produtos",
                 keyColumn: "Id",
                 keyValue: 8,
-                column: "urlName",
-                value: "sungao-slip-listrado");
+                column: "CategoriaId",
+                value: 1);
 
             migrationBuilder.UpdateData(
                 table: "Produtos",
                 keyColumn: "Id",
                 keyValue: 9,
-                column: "urlName",
-                value: "biquini-cropped-vermelho");
+                column: "CategoriaId",
+                value: 1);
 
             migrationBuilder.UpdateData(
                 table: "Produtos",
                 keyColumn: "Id",
                 keyValue: 10,
-                column: "urlName",
-                value: "maio-plus-size-floral-escuro");
+                column: "CategoriaId",
+                value: 2);
 
             migrationBuilder.UpdateData(
                 table: "Produtos",
                 keyColumn: "Id",
                 keyValue: 11,
-                column: "urlName",
-                value: "saida-praia-vestido-estampado");
+                column: "CategoriaId",
+                value: 3);
 
             migrationBuilder.UpdateData(
                 table: "Produtos",
                 keyColumn: "Id",
                 keyValue: 12,
-                column: "urlName",
-                value: "sungao-estampado-abstrato");
+                column: "CategoriaId",
+                value: 1);
 
             migrationBuilder.UpdateData(
                 table: "Produtos",
                 keyColumn: "Id",
                 keyValue: 13,
-                column: "urlName",
-                value: "biquini-hot-pant-preto");
+                column: "CategoriaId",
+                value: 1);
 
             migrationBuilder.UpdateData(
                 table: "Produtos",
                 keyColumn: "Id",
                 keyValue: 14,
-                column: "urlName",
-                value: "maio-com-bojo-verde-agua");
+                column: "CategoriaId",
+                value: 2);
 
             migrationBuilder.UpdateData(
                 table: "Produtos",
                 keyColumn: "Id",
                 keyValue: 15,
-                column: "urlName",
-                value: "saida-praia-camisa-listrada");
+                column: "CategoriaId",
+                value: 3);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Produtos_CategoriaId",
+                table: "Produtos",
+                column: "CategoriaId");
+
+            migrationBuilder.AddForeignKey(
+                name: "FK_Produtos_Categorias_CategoriaId",
+                table: "Produtos",
+                column: "CategoriaId",
+                principalTable: "Categorias",
+                principalColumn: "Id");
+        }
+
+        /// <inheritdoc />
+        protected override void Down(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.DropForeignKey(
+                name: "FK_Produtos_Categorias_CategoriaId",
+                table: "Produtos");
+
+            migrationBuilder.DropIndex(
+                name: "IX_Produtos_CategoriaId",
+                table: "Produtos");
+
+            migrationBuilder.DropColumn(
+                name: "CategoriaId",
+                table: "Produtos");
         }
     }
 }

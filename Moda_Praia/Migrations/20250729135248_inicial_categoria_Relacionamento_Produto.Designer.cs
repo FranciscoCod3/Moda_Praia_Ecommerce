@@ -11,8 +11,8 @@ using Moda_Praia.Data;
 namespace Moda_Praia.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250721192514_tabelaImagem_Produto_Precisao02")]
-    partial class tabelaImagem_Produto_Precisao02
+    [Migration("20250729135248_inicial_categoria_Relacionamento_Produto")]
+    partial class inicial_categoria_Relacionamento_Produto
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,6 +24,22 @@ namespace Moda_Praia.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("Moda_Praia.Models.Categoria", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Nome")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Categorias");
+                });
+
             modelBuilder.Entity("Moda_Praia.Models.Produto", b =>
                 {
                     b.Property<int>("Id")
@@ -32,20 +48,16 @@ namespace Moda_Praia.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Categoria")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int?>("CategoriaId")
+                        .HasColumnType("int");
 
                     b.Property<string>("CorBase")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Descricao")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Nome")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("PrecoCusto")
@@ -59,11 +71,9 @@ namespace Moda_Praia.Migrations
                     b.Property<int?>("QuantidadeEstoque")
                         .HasColumnType("int");
 
-                    b.Property<string>("urlName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.HasKey("Id");
+
+                    b.HasIndex("CategoriaId");
 
                     b.ToTable("Produtos");
 
@@ -71,182 +81,167 @@ namespace Moda_Praia.Migrations
                         new
                         {
                             Id = 1,
-                            Categoria = "Biquínis",
+                            CategoriaId = 1,
                             CorBase = "Multicolorido",
                             Descricao = "Biquíni cortininha com estampa floral vibrante, ideal para os dias de sol.",
                             Nome = "Biquíni Cortininha Estampado Floral",
                             PrecoCusto = 35.50m,
                             PrecoVenda = 79.90m,
-                            QuantidadeEstoque = 50,
-                            urlName = "biquini-cortininha-floral"
+                            QuantidadeEstoque = 50
                         },
                         new
                         {
                             Id = 2,
-                            Categoria = "Maiôs",
+                            CategoriaId = 2,
                             CorBase = "Azul",
                             Descricao = "Maiô estilo engana mamãe em tecido liso azul, elegante e confortável.",
                             Nome = "Maiô Engana Mamãe Liso Azul",
                             PrecoCusto = 45.00m,
                             PrecoVenda = 99.90m,
-                            QuantidadeEstoque = 30,
-                            urlName = "maio-engana-mamae-azul"
+                            QuantidadeEstoque = 30
                         },
                         new
                         {
                             Id = 3,
-                            Categoria = "Saídas de Praia",
+                            CategoriaId = 3,
                             CorBase = "Branco",
                             Descricao = "Saída de praia longa em renda branca, perfeita para um look sofisticado.",
                             Nome = "Saída de Praia Longa Renda Branca",
                             PrecoCusto = 60.00m,
                             PrecoVenda = 129.90m,
-                            QuantidadeEstoque = 25,
-                            urlName = "saida-praia-longa-renda-branca"
+                            QuantidadeEstoque = 25
                         },
                         new
                         {
                             Id = 4,
-                            Categoria = "Sungas",
+                            CategoriaId = 1,
                             CorBase = "Preto",
                             Descricao = "Sungão modelo boxer em tecido liso preto, confortável e com bom ajuste.",
                             Nome = "Sungão Boxer Liso Preto",
                             PrecoCusto = 28.00m,
                             PrecoVenda = 59.90m,
-                            QuantidadeEstoque = 40,
-                            urlName = "sungao-boxer-preto"
+                            QuantidadeEstoque = 40
                         },
                         new
                         {
                             Id = 5,
-                            Categoria = "Biquínis",
+                            CategoriaId = 1,
                             CorBase = "Branco com Poá Preto",
                             Descricao = "Biquíni tomara que caia com estampa de poá clássica e charmosa.",
                             Nome = "Biquíni Tomara que Caia Poá",
                             PrecoCusto = 40.00m,
                             PrecoVenda = 89.90m,
-                            QuantidadeEstoque = 35,
-                            urlName = "biquini-tomara-que-caia-poa"
+                            QuantidadeEstoque = 35
                         },
                         new
                         {
                             Id = 6,
-                            Categoria = "Maiôs",
+                            CategoriaId = 2,
                             CorBase = "Multicolorido",
                             Descricao = "Maiô com corte cavado e estampa tropical vibrante, para um visual moderno.",
                             Nome = "Maiô Cavado Estampado Tropical",
                             PrecoCusto = 50.00m,
                             PrecoVenda = 109.90m,
-                            QuantidadeEstoque = 20,
-                            urlName = "maio-cavado-estampado-tropical"
+                            QuantidadeEstoque = 20
                         },
                         new
                         {
                             Id = 7,
-                            Categoria = "Saídas de Praia",
+                            CategoriaId = 3,
                             CorBase = "Bege",
                             Descricao = "Saída de praia curta em crochê, leve e estilosa para os dias quentes.",
                             Nome = "Saída de Praia Curta Crochê",
                             PrecoCusto = 45.00m,
                             PrecoVenda = 99.90m,
-                            QuantidadeEstoque = 30,
-                            urlName = "saida-praia-curta-croche"
+                            QuantidadeEstoque = 30
                         },
                         new
                         {
                             Id = 8,
-                            Categoria = "Sungas",
+                            CategoriaId = 1,
                             CorBase = "Azul com Listras Brancas",
                             Descricao = "Sungão modelo slip com estampa listrada, confortável e com ótimo caimento.",
                             Nome = "Sungão Slip Listrado",
                             PrecoCusto = 22.00m,
                             PrecoVenda = 49.90m,
-                            QuantidadeEstoque = 55,
-                            urlName = "sungao-slip-listrado"
+                            QuantidadeEstoque = 55
                         },
                         new
                         {
                             Id = 9,
-                            Categoria = "Biquínis",
+                            CategoriaId = 1,
                             CorBase = "Vermelho",
                             Descricao = "Biquíni modelo cropped em tecido liso vermelho, moderno e estiloso.",
                             Nome = "Biquíni Cropped Liso Vermelho",
                             PrecoCusto = 42.00m,
                             PrecoVenda = 94.90m,
-                            QuantidadeEstoque = 45,
-                            urlName = "biquini-cropped-vermelho"
+                            QuantidadeEstoque = 45
                         },
                         new
                         {
                             Id = 10,
-                            Categoria = "Maiôs",
+                            CategoriaId = 2,
                             CorBase = "Preto com Flores",
                             Descricao = "Maiô plus size com estampa floral em tons escuros, elegante e confortável.",
                             Nome = "Maiô Plus Size Floral Escuro",
                             PrecoCusto = 55.00m,
                             PrecoVenda = 119.90m,
-                            QuantidadeEstoque = 15,
-                            urlName = "maio-plus-size-floral-escuro"
+                            QuantidadeEstoque = 15
                         },
                         new
                         {
                             Id = 11,
-                            Categoria = "Saídas de Praia",
+                            CategoriaId = 3,
                             CorBase = "Estampado",
                             Descricao = "Saída de praia modelo vestido com estampa colorida, prático e charmoso.",
                             Nome = "Saída de Praia Vestido Estampado",
                             PrecoCusto = 52.00m,
                             PrecoVenda = 114.90m,
-                            QuantidadeEstoque = 28,
-                            urlName = "saida-praia-vestido-estampado"
+                            QuantidadeEstoque = 28
                         },
                         new
                         {
                             Id = 12,
-                            Categoria = "Sungas",
+                            CategoriaId = 1,
                             CorBase = "Multicolorido",
                             Descricao = "Sungão com estampa abstrata moderna, para um visual diferenciado.",
                             Nome = "Sungão Estampado Abstrato",
                             PrecoCusto = 30.00m,
                             PrecoVenda = 64.90m,
-                            QuantidadeEstoque = 38,
-                            urlName = "sungao-estampado-abstrato"
+                            QuantidadeEstoque = 38
                         },
                         new
                         {
                             Id = 13,
-                            Categoria = "Biquínis",
+                            CategoriaId = 1,
                             CorBase = "Preto",
                             Descricao = "Biquíni modelo hot pant em tecido liso preto, elegante e com bom caimento.",
                             Nome = "Biquíni Hot Pant Liso Preto",
                             PrecoCusto = 45.00m,
                             PrecoVenda = 99.90m,
-                            QuantidadeEstoque = 42,
-                            urlName = "biquini-hot-pant-preto"
+                            QuantidadeEstoque = 42
                         },
                         new
                         {
                             Id = 14,
-                            Categoria = "Maiôs",
+                            CategoriaId = 2,
                             CorBase = "Verde Água",
                             Descricao = "Maiô com bojo em tecido liso verde água, confortável e com bom suporte.",
                             Nome = "Maiô com Bojo Liso Verde Água",
                             PrecoCusto = 48.00m,
                             PrecoVenda = 104.90m,
-                            QuantidadeEstoque = 22,
-                            urlName = "maio-com-bojo-verde-agua"
+                            QuantidadeEstoque = 22
                         },
                         new
                         {
                             Id = 15,
-                            Categoria = "Saídas de Praia",
+                            CategoriaId = 3,
                             CorBase = "Branco com Listras Azuis",
                             Descricao = "Saída de praia modelo camisa com estampa listrada, moderna e versátil.",
                             Nome = "Saída de Praia Camisa Listrada",
                             PrecoCusto = 50.00m,
                             PrecoVenda = 109.90m,
-                            QuantidadeEstoque = 33,
-                            urlName = "saida-praia-camisa-listrada"
+                            QuantidadeEstoque = 33
                         });
                 });
 
@@ -272,10 +267,19 @@ namespace Moda_Praia.Migrations
                     b.ToTable("ProdutoImagem");
                 });
 
+            modelBuilder.Entity("Moda_Praia.Models.Produto", b =>
+                {
+                    b.HasOne("Moda_Praia.Models.Categoria", "Categoria")
+                        .WithMany("Produtos")
+                        .HasForeignKey("CategoriaId");
+
+                    b.Navigation("Categoria");
+                });
+
             modelBuilder.Entity("Moda_Praia.Models.ProdutoImagem", b =>
                 {
                     b.HasOne("Moda_Praia.Models.Produto", "Produto")
-                        .WithMany("produtoImagems")
+                        .WithMany("ProdutoImagens")
                         .HasForeignKey("ProdutoId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -283,9 +287,14 @@ namespace Moda_Praia.Migrations
                     b.Navigation("Produto");
                 });
 
+            modelBuilder.Entity("Moda_Praia.Models.Categoria", b =>
+                {
+                    b.Navigation("Produtos");
+                });
+
             modelBuilder.Entity("Moda_Praia.Models.Produto", b =>
                 {
-                    b.Navigation("produtoImagems");
+                    b.Navigation("ProdutoImagens");
                 });
 #pragma warning restore 612, 618
         }
