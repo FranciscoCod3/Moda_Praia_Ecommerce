@@ -14,7 +14,7 @@
                         <th class="text-left">@Html.DisplayNameFor(Model => Model.Id)</th>
                         <th class="text-left">@Html.DisplayNameFor(Model => Model.Nome)</th>
                         <th class="text-left">@Html.DisplayNameFor(Model => Model.PrecoVenda)</th>
-                        <th class="text-left">Categoria</th>
+                        <th class="text-left">@Html.DisplayNameFor(Model => Model.Categoria)</th>
                         <th class="text-left">@Html.DisplayNameFor(Model => Model.CorBase)</th>
                         <th class="text-left">@Html.DisplayNameFor(Model => Model.QuantidadeEstoque)</th>
                         <th class="text-center border-b-[0.2px] border-black border-solid">Ações</th>
@@ -28,7 +28,7 @@
                             <td>@produto.Id</td>
                             <td>@produto.Nome</td>
                             <td>@produto.PrecoVenda</td>
-                            <td>Trocar_por_Lista_depois</td>
+                            <td>@produto.Categoria.Nome</td>
                             <td>@produto.CorBase</td>
                             <td>@produto.QuantidadeEstoque</td>
                             <td class="bg-white flex gap-1">

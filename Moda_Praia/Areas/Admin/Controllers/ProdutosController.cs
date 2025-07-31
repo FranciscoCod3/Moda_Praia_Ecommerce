@@ -20,14 +20,19 @@ namespace Moda_Praia.Areas.Admin.Controllers
         }
         public IActionResult Index()
         {
-            IEnumerable<Produto> produtosDb = _context.Produtos.ToList();
+            IEnumerable<Produto> produtosDb = _context.Produtos.Include(x => x.Categoria).ToList();
             return View(produtosDb);
         }
 
         public IActionResult Create()
         {
-            
-            return View();
+            var categorias = _context.Categorias.ToList();
+            var viewModel = new ProdutoViewModel
+            {
+                CategoriasDisponiveis = categorias
+            };
+
+            return View(viewModel);
         }
 
         [HttpPost]
@@ -39,6 +44,8 @@ namespace Moda_Praia.Areas.Admin.Controllers
                 return View(produtoViewModel);
             }
 
+            var categoriaSelecionada = _context.Categorias.FirstOrDefault(cat => cat.Id == produtoViewModel.CategoriaId).ToString();
+
             var produtoBranco = new Produto
             {
                 Nome = produtoViewModel.Nome,
@@ -47,6 +54,7 @@ namespace Moda_Praia.Areas.Admin.Controllers
                 Descricao = produtoViewModel.Descricao,                
                 QuantidadeEstoque = produtoViewModel.QuantidadeEstoque,
                 CorBase = produtoViewModel.CorBase,
+                CategoriaId = int.Parse( produtoViewModel.CategoriaId.ToString()),
                 
             };
 
@@ -54,7 +62,7 @@ namespace Moda_Praia.Areas.Admin.Controllers
             var imageUrls = new List<string>();
 
             // 2. Definir o subdiretório para salvar as imagens (opcional, mas recomendado)
-            var uploadsFolder = Path.Combine(_webHost.WebRootPath, "images", produtoViewModel.Categoria);
+            var uploadsFolder = Path.Combine(_webHost.WebRootPath, "images", categoriaSelecionada);
 
             // Certifique-se de que o diretório exista
             if (!Directory.Exists(uploadsFolder))
@@ -70,9 +78,9 @@ namespace Moda_Praia.Areas.Admin.Controllers
                 {
                     var fileName = Path.GetFileNameWithoutExtension(file.FileName);
                     var extension = Path.GetExtension(file.FileName);
-                    var uniqueFileName = Guid.NewGuid().ToString() + produtoViewModel.Categoria + extension;
+                    var uniqueFileName = Guid.NewGuid().ToString() + categoriaSelecionada + extension;
                     var filePath = Path.Combine(uploadsFolder, uniqueFileName);
-                    var relativePathForDb = Path.Combine("images", produtoViewModel.Categoria, uniqueFileName).Replace("\\", "/");
+                    var relativePathForDb = Path.Combine("images", categoriaSelecionada, uniqueFileName).Replace("\\", "/");
 
                     using (var fileStream = new FileStream(filePath, FileMode.Create))
                     {

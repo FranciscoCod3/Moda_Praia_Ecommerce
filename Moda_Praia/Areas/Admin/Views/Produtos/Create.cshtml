@@ -40,9 +40,18 @@
         
 
         <div class="mx-2 flex flex-col mt-2">
-            <label asp-for="Categoria" class="mb-1"></label>
-            <input asp-for="Categoria" class="border-[0.25px] w-48 rounded-md border-solid border-black" />
-            <span asp-validation-for="Categoria" class="text-base text-red-500 h-[1em]"></span>
+            <label asp-for="CategoriaId" class="mb-1"></label>
+                <select asp-for="CategoriaId" class="border-[0.25px] w-48 rounded-md border-solid border-black">
+                    <option value="">-- Selecione uma Categoria --</option>
+                    @if (Model.CategoriasDisponiveis != null)
+                    {
+                        foreach (var categoria in Model.CategoriasDisponiveis)
+                        {
+                            <option value="@categoria.Id">@categoria.Nome</option>
+                        }
+                    }
+                </select>
+            <span asp-validation-for="CategoriaId" class="text-base text-red-500 h-[1em]"></span>
         </div>
 
        

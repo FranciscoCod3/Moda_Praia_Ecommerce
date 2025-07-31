@@ -18,7 +18,7 @@ namespace Moda_Praia.Models
         [DisplayName("Cor Principal")]
         public string? CorBase { get; set; }
         public int? CategoriaId { get; set; }
-        public Categoria Categoria { get; set; }
+        public Categoria? Categoria { get; set; }
         public List<ProdutoImagem>? ProdutoImagens { get; set; }
     }
 }

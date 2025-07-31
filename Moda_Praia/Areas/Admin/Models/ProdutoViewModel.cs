@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel;
+using Moda_Praia.Models;
 
 namespace Moda_Praia.Areas.Admin.Models
 {
@@ -28,11 +29,7 @@ namespace Moda_Praia.Areas.Admin.Models
         [DisplayName("Descrição do Produto")]
         public string Descricao { get; set; }
 
-        [Required(ErrorMessage = "A categoria é obrigatória.")]
-        [StringLength(50, ErrorMessage = "A categoria não pode exceder 50 caracteres.")]
-        [DisplayName("Categoria")]
-        public string Categoria { get; set; }
-
+        
         [DisplayName("Fotos")]
         public IEnumerable< IFormFile> ? ImagensRoupa { get; set; }
 
@@ -45,5 +42,10 @@ namespace Moda_Praia.Areas.Admin.Models
         [StringLength(50, ErrorMessage = "A cor principal não pode exceder 50 caracteres.")]
         [DisplayName("Cor Principal")]
         public string CorBase { get; set; }
+
+        [Required(ErrorMessage = "A categoria é obrigatória.")]
+        [DisplayName("Categoria")]
+        public int CategoriaId { get; set; }
+        public List<Categoria>? CategoriasDisponiveis { get; set; }
     }
 }
