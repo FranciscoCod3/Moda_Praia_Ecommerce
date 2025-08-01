@@ -11,10 +11,28 @@ namespace Moda_Praia.Data
         }
         public DbSet<Produto> Produtos { get; set; }
         public DbSet<Categoria> Categorias { get; set; }
+        public DbSet<Tamanho> Tamanhos { get; set; }
+        public DbSet<ProdutoTamanho> ProdutoTamanhos { get; set; }
+        public DbSet<ProdutoImagem> ProdutoImagens { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<ProdutoTamanho>()
+            .HasKey(pt => new { pt.ProdutoId, pt.TamanhoId });
+
+            // Configura as relações de muitos para muitos (opcional, o EF Core pode inferir)
+            modelBuilder.Entity<ProdutoTamanho>()
+                .HasOne(pt => pt.Produto)
+                .WithMany(p => p.ProdutoTamanhos)
+                .HasForeignKey(pt => pt.ProdutoId);
+
+            modelBuilder.Entity<ProdutoTamanho>()
+                .HasOne(pt => pt.Tamanho)
+                .WithMany(t => t.ProdutoTamanhos)
+                .HasForeignKey(pt => pt.TamanhoId);
 
             modelBuilder.Entity<Produto>().HasData(
                new Produto

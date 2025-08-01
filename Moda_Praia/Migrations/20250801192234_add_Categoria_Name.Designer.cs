@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Moda_Praia.Data;
 
@@ -10,9 +11,11 @@ using Moda_Praia.Data;
 namespace Moda_Praia.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250801192234_add_Categoria_Name")]
+    partial class add_Categoria_Name
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -47,6 +50,9 @@ namespace Moda_Praia.Migrations
 
                     b.Property<int?>("CategoriaId")
                         .HasColumnType("int");
+
+                    b.Property<string>("CategoriaNome")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("CorBase")
                         .HasColumnType("nvarchar(max)");
@@ -261,42 +267,7 @@ namespace Moda_Praia.Migrations
 
                     b.HasIndex("ProdutoId");
 
-                    b.ToTable("ProdutoImagens");
-                });
-
-            modelBuilder.Entity("Moda_Praia.Models.ProdutoTamanho", b =>
-                {
-                    b.Property<int>("ProdutoId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("TamanhoId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Estoque")
-                        .HasColumnType("int");
-
-                    b.HasKey("ProdutoId", "TamanhoId");
-
-                    b.HasIndex("TamanhoId");
-
-                    b.ToTable("ProdutoTamanhos");
-                });
-
-            modelBuilder.Entity("Moda_Praia.Models.Tamanho", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Tamanhos");
+                    b.ToTable("ProdutoImagem");
                 });
 
             modelBuilder.Entity("Moda_Praia.Models.Produto", b =>
@@ -319,25 +290,6 @@ namespace Moda_Praia.Migrations
                     b.Navigation("Produto");
                 });
 
-            modelBuilder.Entity("Moda_Praia.Models.ProdutoTamanho", b =>
-                {
-                    b.HasOne("Moda_Praia.Models.Produto", "Produto")
-                        .WithMany("ProdutoTamanhos")
-                        .HasForeignKey("ProdutoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Moda_Praia.Models.Tamanho", "Tamanho")
-                        .WithMany("ProdutoTamanhos")
-                        .HasForeignKey("TamanhoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Produto");
-
-                    b.Navigation("Tamanho");
-                });
-
             modelBuilder.Entity("Moda_Praia.Models.Categoria", b =>
                 {
                     b.Navigation("Produtos");
@@ -346,13 +298,6 @@ namespace Moda_Praia.Migrations
             modelBuilder.Entity("Moda_Praia.Models.Produto", b =>
                 {
                     b.Navigation("ProdutoImagens");
-
-                    b.Navigation("ProdutoTamanhos");
-                });
-
-            modelBuilder.Entity("Moda_Praia.Models.Tamanho", b =>
-                {
-                    b.Navigation("ProdutoTamanhos");
                 });
 #pragma warning restore 612, 618
         }

@@ -20,6 +20,7 @@ namespace Moda_Praia.Areas.Admin.Controllers
         }
         public IActionResult Index()
         {
+            // depois criar uma viewModel só pra consultas personalizadas
             IEnumerable<Produto> produtosDb = _context.Produtos.Include(x => x.Categoria).ToList();
             return View(produtosDb);
         }
