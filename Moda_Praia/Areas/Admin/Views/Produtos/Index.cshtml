@@ -14,9 +14,8 @@
                         <th class="text-left">@Html.DisplayNameFor(Model => Model.Id)</th>
                         <th class="text-left">@Html.DisplayNameFor(Model => Model.Nome)</th>
                         <th class="text-left">@Html.DisplayNameFor(Model => Model.PrecoVenda)</th>
-                        <th class="text-left">@Html.DisplayNameFor(Model => Model.Categoria)</th>
+                        <th class="text-left">@Html.DisplayNameFor(Model => Model.Categoria.Nome)</th>
                         <th class="text-left">@Html.DisplayNameFor(Model => Model.CorBase)</th>
-                        <th class="text-left">@Html.DisplayNameFor(Model => Model.QuantidadeEstoque)</th>
                         <th class="text-center border-b-[0.2px] border-black border-solid">Ações</th>
                     </tr>
                 </thead>
@@ -30,7 +29,6 @@
                             <td>@produto.PrecoVenda</td>
                             <td>@produto.Categoria.Nome</td>
                             <td>@produto.CorBase</td>
-                            <td>@produto.QuantidadeEstoque</td>
                             <td class="bg-white flex gap-1">
                                 <a asp-area="Admin" asp-controller="Produtos" asp-action="Detalhes" asp-route-id="@produto.Id" class="px-2 border border-solid border-2 border-gray-200 text-white uppercase bg-blue-500" id="detalhes">Detalhes</a>
                                 <a asp-area="Admin" asp-controller="Produtos" asp-action="Detalhes" asp-route-id="@produto.Id" class="px-2 border border-solid border-2 border-gray-200 text-black uppercase bg-yellow-300" id="editar">Editar</a>

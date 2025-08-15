@@ -28,9 +28,11 @@ namespace Moda_Praia.Areas.Admin.Controllers
         public IActionResult Create()
         {
             var categorias = _context.Categorias.ToList();
+            var tamanhos = _context.Tamanhos.ToList();
             var viewModel = new ProdutoViewModel
             {
-                CategoriasDisponiveis = categorias
+                CategoriasDisponiveis = categorias,
+                TamanhosDisponiveisParaSelecao = tamanhos
             };
 
             return View(viewModel);
@@ -45,15 +47,15 @@ namespace Moda_Praia.Areas.Admin.Controllers
                 return View(produtoViewModel);
             }
 
+            
             var categoriaSelecionada = _context.Categorias.FirstOrDefault(cat => cat.Id == produtoViewModel.CategoriaId).ToString();
 
-            var produtoBranco = new Produto
+            var produtoBanco = new Produto
             {
                 Nome = produtoViewModel.Nome,
                 PrecoVenda = produtoViewModel.PrecoVenda,
                 PrecoCusto = produtoViewModel.PrecoCusto,
                 Descricao = produtoViewModel.Descricao,                
-                QuantidadeEstoque = produtoViewModel.QuantidadeEstoque,
                 CorBase = produtoViewModel.CorBase,
                 CategoriaId = int.Parse( produtoViewModel.CategoriaId.ToString()),
                 
@@ -93,15 +95,41 @@ namespace Moda_Praia.Areas.Admin.Controllers
 
             }
 
-            produtoBranco.ProdutoImagens = new List<ProdutoImagem>();
+            produtoBanco.ProdutoImagens = new List<ProdutoImagem>();
 
             foreach (var url in imageUrls)
             {
-                produtoBranco.ProdutoImagens.Add(new ProdutoImagem { UrlImagem = url });
-            }                             
+                produtoBanco.ProdutoImagens.Add(new ProdutoImagem { UrlImagem = url });
+            }            
 
-            _context.Add(produtoBranco);
+            _context.Add(produtoBanco);
             _context.SaveChanges();
+
+            foreach (var item in produtoViewModel.TamanhosSelecionados)
+            {
+                // Adicione esta condição para verificar se o valor foi preenchido.
+                // Lembre-se que 'Quantidade' na sua ViewModel deve ser do tipo int?.
+                if (item.Quantidade.HasValue)
+                {
+                    var tamnhoProdutoBanco = new ProdutoTamanho();
+
+                    tamnhoProdutoBanco.ProdutoId = produtoBanco.Id;
+                    tamnhoProdutoBanco.TamanhoId = item.TamanhoId;
+
+                    // Use o valor que foi preenchido, garantindo que ele não é nulo.
+                    tamnhoProdutoBanco.Estoque = item.Quantidade.Value;
+
+                    _context.Add(tamnhoProdutoBanco);
+                }
+            }
+                      
+            
+            _context.SaveChanges();
+
+
+
+
+
             return RedirectToAction("Index");
         }
 
@@ -111,11 +139,11 @@ namespace Moda_Praia.Areas.Admin.Controllers
             {
                 return View();
             }
-            var produtobranco = _context.Produtos.
+            var produtobanco = _context.Produtos.
                 Include(x => x.ProdutoImagens).
                 FirstOrDefault(x => x.Id == id);
             
-            return View(produtobranco);
+            return View(produtobanco);
         }
 
     }

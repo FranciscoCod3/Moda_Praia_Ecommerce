@@ -4,7 +4,7 @@
     {
         public int ProdutoId { get; set; }
         public int TamanhoId { get; set; }
-        public int Estoque {  get; set; }
+        public int Estoque { get; set; } = 0;
         public Produto? Produto { get; set; }
         public Tamanho? Tamanho { get; set; }
 

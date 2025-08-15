@@ -13,8 +13,6 @@ namespace Moda_Praia.Models
         public decimal PrecoCusto { get; set; }
         [DisplayName("Descrição do Produto")]
         public string? Descricao { get; set; }
-        [DisplayName("Qtd")]
-        public int? QuantidadeEstoque { get; set; }
         [DisplayName("Cor Principal")]
         public string? CorBase { get; set; }
         public int? CategoriaId { get; set; }
