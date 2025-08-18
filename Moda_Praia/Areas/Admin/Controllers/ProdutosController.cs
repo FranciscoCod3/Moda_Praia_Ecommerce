@@ -47,90 +47,109 @@ namespace Moda_Praia.Areas.Admin.Controllers
                 return View(produtoViewModel);
             }
 
-            
-            var categoriaSelecionada = _context.Categorias.FirstOrDefault(cat => cat.Id == produtoViewModel.CategoriaId).ToString();
 
-            var produtoBanco = new Produto
-            {
-                Nome = produtoViewModel.Nome,
-                PrecoVenda = produtoViewModel.PrecoVenda,
-                PrecoCusto = produtoViewModel.PrecoCusto,
-                Descricao = produtoViewModel.Descricao,                
-                CorBase = produtoViewModel.CorBase,
-                CategoriaId = int.Parse( produtoViewModel.CategoriaId.ToString()),
-                
-            };
-
-            // 1. Lista para armazenar os caminhos das imagens
+            // Lista para armazenar os caminhos das imagens
             var imageUrls = new List<string>();
 
-            // 2. Definir o subdiretório para salvar as imagens (opcional, mas recomendado)
-            var uploadsFolder = Path.Combine(_webHost.WebRootPath, "images", categoriaSelecionada);
-
-            // Certifique-se de que o diretório exista
-            if (!Directory.Exists(uploadsFolder))
+            // Inicia a transação do banco de dados para garantir que a operação seja atômica
+            using (var transaction = _context.Database.BeginTransaction())
             {
-                Directory.CreateDirectory(uploadsFolder);
-            }
-
-
-
-            foreach (var file in produtoViewModel.ImagensRoupa)
-            {
-                if (file != null && file.Length > 0)
+                try
                 {
-                    var fileName = Path.GetFileNameWithoutExtension(file.FileName);
-                    var extension = Path.GetExtension(file.FileName);
-                    var uniqueFileName = Guid.NewGuid().ToString() + categoriaSelecionada + extension;
-                    var filePath = Path.Combine(uploadsFolder, uniqueFileName);
-                    var relativePathForDb = Path.Combine("images", categoriaSelecionada, uniqueFileName).Replace("\\", "/");
+                    // Busca o nome da categoria para a pasta de imagens
+                    var categoriaSelecionada = _context.Categorias.FirstOrDefault(cat => cat.Id == produtoViewModel.CategoriaId)?.Nome;
 
-                    using (var fileStream = new FileStream(filePath, FileMode.Create))
+                    // Se a categoria não for encontrada, retorna um erro
+                    if (string.IsNullOrEmpty(categoriaSelecionada))
                     {
-                        await file.CopyToAsync(fileStream); // Use CopyToAsync para melhor performance
+                        ModelState.AddModelError("CategoriaId", "A categoria selecionada é inválida.");
+                        await transaction.RollbackAsync();
+                        return View(produtoViewModel);
                     }
-                    imageUrls.Add(relativePathForDb);
 
+                    // 1. Salva as imagens no sistema de arquivos
+                    var uploadsFolder = Path.Combine(_webHost.WebRootPath, "images", categoriaSelecionada);
+                    if (!Directory.Exists(uploadsFolder))
+                    {
+                        Directory.CreateDirectory(uploadsFolder);
+                    }
+
+                    foreach (var file in produtoViewModel.ImagensRoupa)
+                    {
+                        if (file != null && file.Length > 0)
+                        {
+                            // Gera um nome de arquivo único para evitar conflitos
+                            var uniqueFileName = Guid.NewGuid().ToString() + Path.GetExtension(file.FileName);
+                            var filePath = Path.Combine(uploadsFolder, uniqueFileName);
+                            var relativePathForDb = Path.Combine("images", categoriaSelecionada, uniqueFileName).Replace("\\", "/");
+
+                            using (var fileStream = new FileStream(filePath, FileMode.Create))
+                            {
+                                await file.CopyToAsync(fileStream);
+                            }
+                            imageUrls.Add(relativePathForDb);
+                        }
+                    }
+
+                    // 2. Cria a entidade Produto e associa as imagens
+                    var produtoBanco = new Produto
+                    {
+                        Nome = produtoViewModel.Nome,
+                        PrecoVenda = produtoViewModel.PrecoVenda,
+                        PrecoCusto = produtoViewModel.PrecoCusto,
+                        Descricao = produtoViewModel.Descricao,
+                        CorBase = produtoViewModel.CorBase,
+                        CategoriaId = produtoViewModel.CategoriaId,
+                    };
+                    produtoBanco.ProdutoImagens = new List<ProdutoImagem>();
+                    foreach (var url in imageUrls)
+                    {
+                        produtoBanco.ProdutoImagens.Add(new ProdutoImagem { UrlImagem = url });
+                    }
+
+                    // Adiciona o produto ao contexto. Ele será salvo no SaveChanges final.
+                    _context.Add(produtoBanco);
+
+                    // 3. Adiciona as entidades ProdutoTamanho ao contexto
+                    foreach (var item in produtoViewModel.TamanhosSelecionados)
+                    {
+                        // Verifica se a quantidade foi preenchida
+                        if (item.Quantidade.HasValue)
+                        {
+                            var tamnhoProdutoBanco = new ProdutoTamanho();
+
+                            // Associa a instância do produto (o EF resolve o Id no SaveChanges)
+                            tamnhoProdutoBanco.Produto = produtoBanco;
+
+                            tamnhoProdutoBanco.TamanhoId = item.TamanhoId;
+                            tamnhoProdutoBanco.Estoque = item.Quantidade.Value;
+
+                            _context.Add(tamnhoProdutoBanco);
+                        }
+                    }
+
+                    // 4. Salva todas as alterações (Produto, Imagens, Tamanhos) de uma vez
+                    // O EF resolve a ordem das inserções e os IDs automaticamente.
+                    await _context.SaveChangesAsync();
+
+                    // 5. Se o SaveChanges() foi bem-sucedido, confirma a transação
+                    await transaction.CommitAsync();
+
+                    return RedirectToAction("Index");
                 }
-
-            }
-
-            produtoBanco.ProdutoImagens = new List<ProdutoImagem>();
-
-            foreach (var url in imageUrls)
-            {
-                produtoBanco.ProdutoImagens.Add(new ProdutoImagem { UrlImagem = url });
-            }            
-
-            _context.Add(produtoBanco);
-            _context.SaveChanges();
-
-            foreach (var item in produtoViewModel.TamanhosSelecionados)
-            {
-                // Adicione esta condição para verificar se o valor foi preenchido.
-                // Lembre-se que 'Quantidade' na sua ViewModel deve ser do tipo int?.
-                if (item.Quantidade.HasValue)
+                catch (Exception)
                 {
-                    var tamnhoProdutoBanco = new ProdutoTamanho();
+                    // Em caso de qualquer erro, reverte a transação do banco de dados
+                    await transaction.RollbackAsync();
 
-                    tamnhoProdutoBanco.ProdutoId = produtoBanco.Id;
-                    tamnhoProdutoBanco.TamanhoId = item.TamanhoId;
+                    // Mensagem de erro para o usuário
+                    ModelState.AddModelError("", "Ocorreu um erro ao salvar o produto. Por favor, tente novamente.");
 
-                    // Use o valor que foi preenchido, garantindo que ele não é nulo.
-                    tamnhoProdutoBanco.Estoque = item.Quantidade.Value;
+                    // Lógica para apagar as imagens salvas no disco (não incluída aqui, como conversado)
 
-                    _context.Add(tamnhoProdutoBanco);
+                    return View(produtoViewModel);
                 }
             }
-                      
-            
-            _context.SaveChanges();
-
-
-
-
-
-            return RedirectToAction("Index");
         }
 
         public IActionResult Detalhes(int? id)
