@@ -1,44 +1,70 @@
 ﻿@model IEnumerable<Moda_Praia.Models.Produto>
 
-<section class="flex justify-center">
-    <form action="/" method="post">
-        <div class="grid auto-cols-fr max-w-[75rem] border-y-2 border-solid border-black">
-        
-            <div class="flex justify-between items-center mt-2  mb-2">
-                <h2 class="text-xl">Lista de Produtos</h2>
-                <a asp-area="Admin" asp-controller="Produtos" asp-action="Create" class=" text-xl text-white border-2 border-solid rounded-md border-white px-3 py-2 bg-green-600 uppercase">Cadastrar</a>
-            </div>
-            <table class="border-t-2 border-solid border-black border-separate border-spacing-[2px]">
-                <thead>
-                    <tr class="text-base">
-                        <th class="text-left">@Html.DisplayNameFor(Model => Model.Id)</th>
-                        <th class="text-left">@Html.DisplayNameFor(Model => Model.Nome)</th>
-                        <th class="text-left">@Html.DisplayNameFor(Model => Model.PrecoVenda)</th>
-                        <th class="text-left">@Html.DisplayNameFor(Model => Model.Categoria.Nome)</th>
-                        <th class="text-left">@Html.DisplayNameFor(Model => Model.CorBase)</th>
-                        <th class="text-center border-b-[0.2px] border-black border-solid">Ações</th>
-                    </tr>
-                </thead>
-
-                <tbody >
-                    @foreach (var produto in Model)
-                    {
-                            <tr class="even:bg-slate-100 odd:bg-slate-200">
-                            <td>@produto.Id</td>
-                            <td>@produto.Nome</td>
-                            <td>@produto.PrecoVenda</td>
-                            <td>@produto.Categoria.Nome</td>
-                            <td>@produto.CorBase</td>
-                            <td class="bg-white flex gap-1">
-                                <a asp-area="Admin" asp-controller="Produtos" asp-action="Detalhes" asp-route-id="@produto.Id" class="px-2 border border-solid border-2 border-gray-200 text-white uppercase bg-blue-500" id="detalhes">Detalhes</a>
-                                <a asp-area="Admin" asp-controller="Produtos" asp-action="Detalhes" asp-route-id="@produto.Id" class="px-2 border border-solid border-2 border-gray-200 text-black uppercase bg-yellow-300" id="editar">Editar</a>
-                                <a asp-area="Admin" asp-controller="Produtos" asp-action="Detalhes" asp-route-id="@produto.Id" class="px-2 border border-solid border-2 border-gray-200 text-white uppercase bg-red-500" id="excluir">Excluir</a>
-                           </td>
-                        </tr>
-                    }
-                </tbody>
-
-            </table>
+<div class="flex flex-col flex-grow overflow-y-auto ">
+    <div class="flex justify-between items-center mx-4 bg-white px-2 py-3 rounded-md mb-2">
+        <div class="flex gap-4">
+            <a class="rounded-md p-1 border-[0.5px] border-gray-300 text-slate-600 text-xs" href="#">Todas categorias ^</a>
+            <a class="rounded-md p-1 border-[0.5px] border-gray-300 text-slate-600 text-xs" href="#">Preço ^</a>
+            <a class="rounded-md p-1 border-[0.5px] border-gray-300 text-slate-600 text-xs" href="#">Diposnibilidade ^</a>
         </div>
-    </form>
-</section>
+
+        
+        <a  asp-action="Create" class="bg-orange-400 px-3 py-2 rounded-md text-white text-xs">+ Adicionar Produto</a>
+
+    </div>
+
+
+    <table class="mx-4 bg-gray-50 p-4 py-2 rounded-t-md  mb-2 border-b-[0.5px] border-gray-300 table-fixed w-[1150px] ">
+        <thead class=" bg-slate-200 ">
+            <tr class="">
+
+                <th class="p-2 text-start text-sm font-medium text-slate-600">@Html.DisplayNameFor(model => model.Id)</th>
+                <th class="p-2 text-start text-sm font-medium text-slate-600">@Html.DisplayNameFor(model => model.Nome)</th>
+                <th class="p-2 text-start text-sm font-medium text-slate-600">@Html.DisplayNameFor(model => model.PrecoVenda)</th>
+                <th class="p-2 text-start text-sm font-medium text-slate-600">@Html.DisplayNameFor(model => model.PrecoCusto)</th>
+                <th class="p-2 text-start text-sm font-medium text-slate-600">@Html.DisplayNameFor(model => model)</th>
+                <th class="p-2 text-center text-sm font-medium text-slate-600">Ações</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody class="">
+
+            <tr class="border-b-[0.5px] border-gray-300 hover:bg-gray-100 transition-colors duration-200">
+
+                <td class="p-2 text-start text-xs text-slate-950">Biquini</td>
+                <td class="p-2 text-start text-xs text-slate-950">3123124</td>
+                <td class="p-2 text-start text-xs text-slate-950">sunga</td>
+                <td class="p-2 text-start text-xs text-slate-950">R$ 43,20</td>
+                <td class="p-2 text-start text-xs text-slate-950">30</td>
+                <td class="p-2 text-center text-xs text-slate-950">
+                    <div>
+                        <a class="px-1 py-1 rounded-sm text-black bg-sky-600 hover:bg-sky-700 transition-colors duration-200" href="#">Detalhes</a>
+                        <a class="px-1 py-1 rounded-sm text-black bg-amber-400 hover:bg-amber-500 transition-colors duration-200" href="#">Atualizar</a>
+                        <a class="px-1 py-1 rounded-sm text-black bg-red-500 hover:bg-red-600 transition-colors duration-200" href="#">Excluir</a>
+                    </div>
+
+                </td>
+
+            </tr>
+        
+
+
+
+        </tbody>
+
+    </table>
+
+</div>
+
+
+<div class=" flex justify-end items-center mb-2">
+    <div class="flex gap-2 mx-8 items-center">
+        <a class="bg-slate-300 px-2 py-1 rounded-md hover:bg-slate-400 transition-colors duration-200" href="#">1</a>
+        <a class="bg-slate-300 px-2 py-1 rounded-md hover:bg-slate-400 transition-colors duration-200" href="#">2</a>
+        <a class="bg-slate-300 px-2 py-1 rounded-md hover:bg-slate-400 transition-colors duration-200" href="#">3</a>
+        <a class="bg-slate-300 px-2 py-1 rounded-md hover:bg-slate-400 transition-colors duration-200" href="#">4</a>
+
+    </div>
+</div>
