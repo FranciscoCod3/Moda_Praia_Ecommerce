@@ -22,7 +22,7 @@
                 <th class="p-2 text-start text-sm font-medium text-slate-600">@Html.DisplayNameFor(model => model.Nome)</th>
                 <th class="p-2 text-start text-sm font-medium text-slate-600">@Html.DisplayNameFor(model => model.PrecoVenda)</th>
                 <th class="p-2 text-start text-sm font-medium text-slate-600">@Html.DisplayNameFor(model => model.PrecoCusto)</th>
-                <th class="p-2 text-start text-sm font-medium text-slate-600">@Html.DisplayNameFor(model => model)</th>
+                <th class="p-2 text-start text-sm font-medium text-slate-600">@Html.DisplayNameFor(model => model.CorBase)</th>
                 <th class="p-2 text-center text-sm font-medium text-slate-600">Ações</th>
 
             </tr>
@@ -31,26 +31,28 @@
 
         <tbody class="">
 
-            <tr class="border-b-[0.5px] border-gray-300 hover:bg-gray-100 transition-colors duration-200">
 
-                <td class="p-2 text-start text-xs text-slate-950">Biquini</td>
-                <td class="p-2 text-start text-xs text-slate-950">3123124</td>
-                <td class="p-2 text-start text-xs text-slate-950">sunga</td>
-                <td class="p-2 text-start text-xs text-slate-950">R$ 43,20</td>
-                <td class="p-2 text-start text-xs text-slate-950">30</td>
-                <td class="p-2 text-center text-xs text-slate-950">
-                    <div>
-                        <a class="px-1 py-1 rounded-sm text-black bg-sky-600 hover:bg-sky-700 transition-colors duration-200" href="#">Detalhes</a>
-                        <a class="px-1 py-1 rounded-sm text-black bg-amber-400 hover:bg-amber-500 transition-colors duration-200" href="#">Atualizar</a>
-                        <a class="px-1 py-1 rounded-sm text-black bg-red-500 hover:bg-red-600 transition-colors duration-200" href="#">Excluir</a>
-                    </div>
+            @foreach(var produto in Model) {
 
-                </td>
+                <tr class="border-b-[0.5px] border-gray-300 hover:bg-gray-100 transition-colors duration-200">
 
-            </tr>
-        
+                    <td class="p-2 text-start text-xs text-slate-950">@produto.Id</td>
+                    <td class="p-2 text-start text-xs text-slate-950">@produto.Nome</td>
+                    <td class="p-2 text-start text-xs text-slate-950">@produto.PrecoVenda</td>
+                    <td class="p-2 text-start text-xs text-slate-950">@produto.PrecoCusto</td>
+                    <td class="p-2 text-start text-xs text-slate-950">@produto.CorBase</td>
+                    <td class="p-2 text-center text-xs text-slate-950">
+                        <div>
+                            <a class="px-1 py-1 rounded-sm text-black bg-sky-600 hover:bg-sky-700 transition-colors duration-200" href="#">Detalhes</a>
+                            <a class="px-1 py-1 rounded-sm text-black bg-amber-400 hover:bg-amber-500 transition-colors duration-200" href="#">Atualizar</a>
+                            <a class="px-1 py-1 rounded-sm text-black bg-red-500 hover:bg-red-600 transition-colors duration-200" href="#">Excluir</a>
+                        </div>
 
+                    </td>
 
+                </tr>
+
+            }
 
         </tbody>
 
