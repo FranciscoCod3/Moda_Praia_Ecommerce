@@ -41,7 +41,7 @@ namespace Moda_Praia.Areas.Admin.Models
         public int CategoriaId { get; set; }
         public List<Categoria>? CategoriasDisponiveis { get; set; }
         public List<Tamanho>? TamanhosDisponiveisParaSelecao { get; set; }
-        public List<ProdutoTamanhoViewModel> TamanhosSelecionados { get; set; } = new List<ProdutoTamanhoViewModel>();
+        public List<ProdutoTamanhoViewModel>? TamanhosSelecionados { get; set; } = new List<ProdutoTamanhoViewModel>();
 
     }
 }

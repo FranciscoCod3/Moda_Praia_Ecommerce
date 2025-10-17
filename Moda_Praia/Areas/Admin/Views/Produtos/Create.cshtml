@@ -6,119 +6,183 @@
     Layout = "_Layout_Cadastro";
 }
 
-<div class="w-[900px] mx-auto">
-    <h1 class="ml-2 text-2xl mb-4">Adicionar Novo Produto</h1>
-    
-    <form class="grid grid-cols-2 gap-1 border-2 border-solid bg-gray-50 rounded-md" asp-action="Create" method="post" enctype="multipart/form-data">
-            
-        <div class="mx-2 flex flex-col mt-2">
-            <label asp-for="Nome" class="mb-1"></label>
-            <input asp-for="Nome" class="border-[0.25px] w-64 rounded-md border-solid border-black" />
-            <span asp-validation-for="Nome" class="text-base text-red-500 h-[1em]"></span>
-        </div>
+<main class="bg-zinc-100 py-4">
+    <div class="w-7/12 h-auto mx-auto border-[1px] border-t-4 border-t-orange-400 border-zinc-300 bg-white rounded-md shadow-[0_0px_15px_rgba(0,0,0,0.1)]">
 
+        <div class="mx-6 py-2">
+            <h1 class="text-xl text-slate-700 font-semibold border-b-[1px] border-b-zinc-200 py-2 pb-4">Cadastro de Produtos - Moda Praia</h1>
+            <h2 class="py-2 text-base font-medium text-slate-700">Informações dos produtos</h2>
+            <div class="grid grid-cols-2 gap-2 mb-2">
 
-        
-        <div class="mx-2 flex flex-col mt-2 ">
-            <label asp-for="PrecoVenda" class="mb-1"></label>
-            <input asp-for="PrecoVenda" type="number" step="0.01" class="border-[0.25px] w-48 rounded-md border-solid border-black" />
-            <span asp-validation-for="PrecoVenda" class="text-base text-red-500 h-[1em]"></span>
-        </div>
+                <div>
+                    <label asp-for="Nome" class="block text-sm font-light text-gray-700 mb-1"></label>
+                    <input asp-for="Nome" type="text" class="w-full p-1.5 border border-gray-300 rounded-lg shadow-sm focus:border-green-500 focus:outline-none focus:ring-green-500 focus:ring-1 transition duration-150 ease-in-out">
+                </div>
 
-        <div class="mx-2 flex flex-col mt-2 ">
-            <label asp-for="PrecoCusto" class="mb-1"></label>
-            <input asp-for="PrecoCusto" type="number" step="0.01" class="border-[0.25px] w-48 rounded-md border-solid border-black" />
-            <span asp-validation-for="PrecoCusto" class="text-base text-red-500 h-[1em]"></span>
-        </div>
-       
+                <div>
+                    <label asp-for="CorBase" class="block text-sm font-light text-gray-700 mb-1">Cor Principal</label>
+                    <input asp-for="CorBase" type="text" class="w-full p-1.5 border border-gray-300 rounded-lg shadow-sm focus:border-green-500 focus:outline-none focus:ring-green-500 focus:ring-1 transition duration-150 ease-in-out">
+                </div>
 
-        <div class="mx-2 flex flex-col mt-2">
-            <label asp-for="CorBase" class="mb-1"></label>
-            <input asp-for="CorBase" class="border-[0.25px] w-48 rounded-md border-solid border-black" />
-            <span asp-validation-for="CorBase" class="text-base text-red-500 h-[1em]"></span>
-        </div>
-        
+                <div>
+                    <label class="block text-sm font-light text-gray-700 mb-1">Preço de Venda (R$)</label>
+                    <input type="text" class="w-full p-1.5 border border-gray-300 rounded-lg shadow-sm focus:border-green-500 focus:outline-none focus:ring-green-500 focus:ring-1 transition duration-150 ease-in-out">
+                </div>
 
-        <div class="mx-2 flex flex-col mt-2">
-            <label asp-for="CategoriaId" class="mb-1"></label>
-                <select asp-for="CategoriaId" class="border-[0.25px] w-48 rounded-md border-solid border-black">
-                    <option value="">-- Selecione uma Categoria --</option>
-                    @if (Model.CategoriasDisponiveis != null)
-                    {
-                        foreach (var categoria in Model.CategoriasDisponiveis)
-                        {
-                            <option value="@categoria.Id">@categoria.Nome</option>
-                        }
-                    }
-                </select>
-            <span asp-validation-for="CategoriaId" class="text-base text-red-500 h-[1em]"></span>
-        </div>
+                <div>
+                    <label class="block text-sm font-light text-gray-700 mb-1">Preço de Custo (R$)</label>
+                    <input type="text" class="w-full p-1.5 border border-gray-300 rounded-lg shadow-sm focus:border-green-500 focus:outline-none focus:ring-green-500 focus:ring-1 transition duration-150 ease-in-out">
+                </div>
 
-        <div class="mx-2 flex flex-col mt-2">
-        <label>Tamanhos Disponíveis:</label><br />
-            @if (Model.TamanhosDisponiveisParaSelecao != null)
-            {
-                for (int i = 0; i < Model.TamanhosDisponiveisParaSelecao.Count; i++)
-                {
-                    var tamanho = Model.TamanhosDisponiveisParaSelecao[i];
-                    <div>
-                        <input type="checkbox" id="tamanho_@tamanho.Id" name="TamanhosSelecionados[@i].TamanhoId" value="@tamanho.Id" />
-                        <label for="tamanho_@tamanho.Id">@tamanho.Name</label>
-                        <input type="number" name="TamanhosSelecionados[@i].Quantidade" placeholder="Estoque para @tamanho.Name" />
+            </div>
+
+            <div>
+                <label class="block text-sm font-light text-gray-700 mb-1"> Descrição do Produto</label>
+
+                <textarea rows="4" class="w-full p-1.5 border border-gray-300 rounded-lg shadow-sm focus:border-green-500 focus:outline-none focus:ring-green-500 focus:ring-1 transition duration-150 ease-in-out">
+                    </textarea>
+            </div>
+
+            <div class="grid grid-cols-2 gap-2 mb-2">
+                <div>
+
+                    <label class="block text-sm font-light text-gray-700 mb-1">Fotos do produto</label>
+
+                    <div class="flex flex-wrap gap-2 space-y-2">
+                        <input type="file" class="text-sm font-light text-gray-700">
+                        <input type="file" class="text-sm font-light text-gray-700">
+                        <input type="file" class="text-sm font-light text-gray-700">
+
                     </div>
-                }
-            }
-            <span asp-validation-for="TamanhosSelecionados" class="text-danger"></span>
+                </div>
+
+                <div>
+
+                    <label class="block text-sm font-light text-gray-700 mb-1" for="categoria-select">Categorias</label>
+                    <div>
+
+
+                        <select id="categoria-select" name="categoria"
+                                class="w-full p-2 border border-gray-300 rounded-md text-sm font-light text-gray-700 focus:border-green-500 focus:outline-none focus:ring-green-500 focus:ring-1 transition duration-150 ease-in-out ">
+                            <option value="" disabled selected>Selecione uma categoria</option>
+                            <option value="eletronicos">Eletrônicos</option>
+                            <option value="moda">Moda</option>
+                            <option value="casa">Casa e Decoração</option>
+                            <option value="esportes">Esportes</option>
+                            <option value="livros">Livros</option>
+                        </select>
+
+                    </div>
+
+
+                </div>
+            </div>
+
+            <div class="">
+                <h3 class="py-2 text-base font-medium text-slate-700">Tamanhos e estoque disponiveis</h3>
+                <div class="bg-zinc-100  border border-gray-300 rounded-lg  ">
+                    <div class="mx-2 my-4 flex flex-wrap gap-2 justify-center items-center ">
+
+                        <div class="text-sm font-light flex items-center flex-wrap gap-2  bg-white border border-gray-300 rounded-lg shadow-sm p-2">
+                            <input type="checkbox" class="size-4 border border-gray-300 rounded-lg shadow-sm">
+                            <label for="P">P</label>
+                            <label for="Quantidade">Quantidade</label>
+                            <input type="number" name="estoque_quantidade" id="estoque_quantidade" min="0" value="0"
+                                   class="w-8 border border-gray-300 rounded-md text-center text-base focus:border-green-500 focus:outline-none focus:ring-green-500 focus:ring-1 transition duration-150 ease-in-out">
+                        </div>
+
+                        <div class="text-sm font-light flex items-center flex-wrap gap-2  bg-white border border-gray-300 rounded-lg shadow-sm p-2">
+                            <input type="checkbox" class="size-4 border border-gray-300 rounded-lg shadow-sm">
+                            <label for="P">P</label>
+                            <label for="Quantidade">Quantidade</label>
+                            <input type="number" name="estoque_quantidade" id="estoque_quantidade" min="0" value="0"
+                                   class="w-8 border border-gray-300 rounded-md text-center text-base focus:border-green-500 focus:outline-none focus:ring-green-500 focus:ring-1 transition duration-150 ease-in-out">
+                        </div>
+
+                        <div class="text-sm font-light flex items-center flex-wrap gap-2  bg-white border border-gray-300 rounded-lg shadow-sm p-2">
+                            <input type="checkbox" class="size-4 border border-gray-300 rounded-lg shadow-sm">
+                            <label for="P">P</label>
+                            <label for="Quantidade">Quantidade</label>
+                            <input type="number" name="estoque_quantidade" id="estoque_quantidade" min="0" value="0"
+                                   class="w-8 border border-gray-300 rounded-md text-center text-base focus:border-green-500 focus:outline-none focus:ring-green-500 focus:ring-1 transition duration-150 ease-in-out">
+                        </div>
+
+                        <div class="text-sm font-light flex items-center flex-wrap gap-2  bg-white border border-gray-300 rounded-lg shadow-sm p-2">
+                            <input type="checkbox" class="size-4 border border-gray-300 rounded-lg shadow-sm">
+                            <label for="P">P</label>
+                            <label for="Quantidade">Quantidade</label>
+                            <input type="number" name="estoque_quantidade" id="estoque_quantidade" min="0" value="0"
+                                   class="w-8 border border-gray-300 rounded-md text-center text-base focus:border-green-500 focus:outline-none focus:ring-green-500 focus:ring-1 transition duration-150 ease-in-out">
+                        </div>
+
+                        <div class="text-sm font-light flex items-center flex-wrap gap-2  bg-white border border-gray-300 rounded-lg shadow-sm p-2">
+                            <input type="checkbox" class="size-4 border border-gray-300 rounded-lg shadow-sm">
+                            <label for="P">P</label>
+                            <label for="Quantidade">Quantidade</label>
+                            <input type="number" name="estoque_quantidade" id="estoque_quantidade" min="0" value="0"
+                                   class="w-8 border border-gray-300 rounded-md text-center text-base focus:border-green-500 focus:outline-none focus:ring-green-500 focus:ring-1 transition duration-150 ease-in-out">
+                        </div>
+
+                        <div class="text-sm font-light flex items-center flex-wrap gap-2  bg-white border border-gray-300 rounded-lg shadow-sm p-2">
+                            <input type="checkbox" class="size-4 border border-gray-300 rounded-lg shadow-sm">
+                            <label for="P">P</label>
+                            <label for="Quantidade">Quantidade</label>
+                            <input type="number" name="estoque_quantidade" id="estoque_quantidade" min="0" value="0"
+                                   class="w-8 border border-gray-300 rounded-md text-center text-base focus:border-green-500 focus:outline-none focus:ring-green-500 focus:ring-1 transition duration-150 ease-in-out">
+                        </div>
+
+                        <div class="text-sm font-light flex items-center flex-wrap gap-2  bg-white border border-gray-300 rounded-lg shadow-sm p-2">
+                            <input type="checkbox" class="size-4 border border-gray-300 rounded-lg shadow-sm">
+                            <label for="P">P</label>
+                            <label for="Quantidade">Quantidade</label>
+                            <input type="number" name="estoque_quantidade" id="estoque_quantidade" min="0" value="0"
+                                   class="w-8 border border-gray-300 rounded-md text-center text-base focus:border-green-500 focus:outline-none focus:ring-green-500 focus:ring-1 transition duration-150 ease-in-out">
+                        </div>
+
+                        <div class="text-sm font-light flex items-center flex-wrap gap-2  bg-white border border-gray-300 rounded-lg shadow-sm p-2">
+                            <input type="checkbox" class="size-4 border border-gray-300 rounded-lg shadow-sm">
+                            <label for="P">P</label>
+                            <label for="Quantidade">Quantidade</label>
+                            <input type="number" name="estoque_quantidade" id="estoque_quantidade" min="0" value="0"
+                                   class="w-8 border border-gray-300 rounded-md text-center text-base focus:border-green-500 focus:outline-none focus:ring-green-500 focus:ring-1 transition duration-150 ease-in-out">
+                        </div>
+
+                        <div class="text-sm font-light flex items-center flex-wrap gap-2  bg-white border border-gray-300 rounded-lg shadow-sm p-2">
+                            <input type="checkbox" class="size-4 border border-gray-300 rounded-lg shadow-sm">
+                            <label for="P">P</label>
+                            <label for="Quantidade">Quantidade</label>
+                            <input type="number" name="estoque_quantidade" id="estoque_quantidade" min="0" value="0"
+                                   class="w-8 border border-gray-300 rounded-md text-center text-base focus:border-green-500 focus:outline-none focus:ring-green-500 focus:ring-1 transition duration-150 ease-in-out">
+                        </div>
+
+                        <div class="text-sm font-light flex items-center flex-wrap gap-2  bg-white border border-gray-300 rounded-lg shadow-sm p-2">
+                            <input type="checkbox" class="size-4 border border-gray-300 rounded-lg shadow-sm">
+                            <label for="P">P</label>
+                            <label for="Quantidade">Quantidade</label>
+                            <input type="number" name="estoque_quantidade" id="estoque_quantidade" min="0" value="0"
+                                   class="w-8 border border-gray-300 rounded-md text-center text-base focus:border-green-500 focus:outline-none focus:ring-green-500 focus:ring-1 transition duration-150 ease-in-out">
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="border-t-[1px] border-t-zinc-200 mt-6 flex justify-between">
+                <a href="#" class="px-2 py-1 my-3 bg-slate-300 rounded-md">voltar a lista</a>
+                <a href="#" class="px-2 py-1 my-3 bg-green-500 rounded-md">Cadastrar</a>
+
+            </div>
+
+
+
         </div>
-       
-       
-
-        <div class="mx-2 flex flex-col mt-2">
-            <label asp-for="Descricao" class="mb-1"></label>
-            <textarea asp-for="Descricao" class="border-[0.25px] max-w-6xl h-32 rounded-md border-solid border-black"></textarea>
-            <span asp-validation-for="Descricao" class="text-base text-red-500 h-[1em]"></span>
-        </div>
-
-        <div>
-            <h2 class="mx-2">Fotos</h2>
-            <div class="mx-2 flex flex-col mt-2">
-                <label  class="mb-1"></label>
-                <input type="file" asp-for="ImagensRoupa" />
-                <span asp-validation-for="ImagensRoupa" class="text-base text-red-500 h-[1em]"></span>
-            </div>
-
-            <div class="mx-2 flex flex-col mt-2">
-                <label class="mb-1"></label>
-                <input type="file" asp-for="ImagensRoupa" />
-                <span asp-validation-for="ImagensRoupa" class="text-base text-red-500 h-[1em]"></span>
-            </div>
 
 
-            <div class="mx-2 flex flex-col mt-2">
-                <label  class="mb-1"></label>
-                <input type="file" asp-for="ImagensRoupa" />
-                <span asp-validation-for="ImagensRoupa" class="text-base text-red-500 h-[1em]"></span>
-            </div>
-        </div>
-        
+    </div>
+</main>
 
-        <div class="ml-2 mt-4 col-start-2 flex justify-end items-center gap-2 mr-2 mb-2">
 
-            <div >
-                <a class=" text-blue-800" asp-action="Index">Voltar para a Lista</a>
-            </div>
-
-            <div >
-                <button class="px-2 font-[500]  py-2 uppercase bg-green-400 border-[0.25px] border-solid border-gray-400 text-black rounded-md" type="submit">Criar Produto</button>
-            </div>
-        </div>
-        
-
-    </form>
-    
-</div>
-    
-   
 
 
 
