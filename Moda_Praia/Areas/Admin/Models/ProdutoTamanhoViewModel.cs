@@ -7,11 +7,12 @@ namespace Moda_Praia.Areas.Admin.Models
     {
         
         [Required(ErrorMessage = "O tamanho é obrigatório.")]
-        public int TamanhoId { get; set; }       
+        public int TamanhoId { get; set; }    
+        public bool TamanhoSelecionado { get; set; }
         public string? TamanhoNome { get; set; }
-       
+
         [Range(0, int.MaxValue, ErrorMessage = "A quantidade não pode ser negativa.")]
         [DisplayName("Estoque")]
-        public int? Quantidade { get; set; }
+        public int? Quantidade { get; set; } = 0;
     }
 }

@@ -32,12 +32,26 @@ namespace Moda_Praia.Areas.Admin.Controllers
         public IActionResult Create()
         {
             var categorias = _context.Categorias.ToList();
-            var tamanhos = _context.Tamanhos.ToList();
+            var tamanhos = _context.Tamanhos.ToList(); // vem Id e nome
             var viewModel = new ProdutoViewModel
             {
                 CategoriasDisponiveis = categorias,
-                TamanhosDisponiveisParaSelecao = tamanhos
+                TamanhosDisponiveisParaSelecao = tamanhos,
+                TamanhosSelecionados = new List<ProdutoTamanhoViewModel>()
             };
+
+            foreach (var tamanho in tamanhos)
+            {
+                viewModel.TamanhosSelecionados.Add(new ProdutoTamanhoViewModel
+                {
+                    
+                    TamanhoId = tamanho.Id,                   
+                    TamanhoNome = tamanho.Name,                    
+                    Quantidade = 0,
+
+                    
+                });
+            }   
 
             return View(viewModel);
         }
@@ -118,7 +132,7 @@ namespace Moda_Praia.Areas.Admin.Controllers
                     foreach (var item in produtoViewModel.TamanhosSelecionados)
                     {
                         // Verifica se a quantidade foi preenchida
-                        if (item.Quantidade.HasValue)
+                        if (item.TamanhoSelecionado)
                         {
                             var tamnhoProdutoBanco = new ProdutoTamanho();
 
