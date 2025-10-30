@@ -163,7 +163,7 @@ namespace Moda_Praia.Areas.Admin.Controllers
                     // Mensagem de erro para o usuário
                     ModelState.AddModelError("", "Ocorreu um erro ao salvar o produto. Por favor, tente novamente.");
 
-                    // Lógica para apagar as imagens salvas no disco (não incluída aqui, como conversado)
+                    // Lógica para apagar as imagens salvas no disco
 
                     return View(produtoViewModel);
                 }
