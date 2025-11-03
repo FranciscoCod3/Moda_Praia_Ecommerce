@@ -1,0 +1,124 @@
+﻿@model Moda_Praia.Areas.Admin.Models.AtualizarProdutoViewModel
+
+
+@{
+    ViewData["Title"] = "Atualizar Produto";
+    Layout = "_Layout_Cadastro";
+}
+
+<form method="POST" asp-controller="Produtos" asp-action="AtualizarProduto" enctype="multipart/form-data">
+    <main class="bg-zinc-100 py-4">
+        <div class="w-7/12 h-auto mx-auto border-[1px] border-t-4 border-t-orange-400 border-zinc-300 bg-white rounded-md shadow-[0_0px_15px_rgba(0,0,0,0.1)]">
+
+            <div class="mx-6 py-2">
+                <h1 class="text-xl text-slate-700 font-semibold border-b-[1px] border-b-zinc-200 py-2 pb-4">Cadastro de Produtos - Moda Praia</h1>
+                <h2 class="py-2 text-base font-medium text-slate-700">Informações dos produtos</h2>
+                <div class="grid grid-cols-2 gap-2 mb-2">
+
+                    <div>
+                        <label asp-for="Nome" class="block text-sm font-light text-gray-700 mb-1"></label>
+                        <input asp-for="Nome" type="text" class="w-full p-1.5 border border-gray-300 rounded-lg shadow-sm focus:border-green-500 focus:outline-none focus:ring-green-500 focus:ring-1 transition duration-150 ease-in-out">
+                    </div>
+
+                    <div>
+                        <label asp-for="CorBase" class="block text-sm font-light text-gray-700 mb-1">Cor Principal</label>
+                        <input asp-for="CorBase" type="text" class="w-full p-1.5 border border-gray-300 rounded-lg shadow-sm focus:border-green-500 focus:outline-none focus:ring-green-500 focus:ring-1 transition duration-150 ease-in-out">
+                    </div>
+
+                    <div>
+                        <label asp-for="PrecoVenda" class="block text-sm font-light text-gray-700 mb-1">Preço de Venda (R$)</label>
+                        <input asp-for="PrecoVenda" type="text" class="w-full p-1.5 border border-gray-300 rounded-lg shadow-sm focus:border-green-500 focus:outline-none focus:ring-green-500 focus:ring-1 transition duration-150 ease-in-out">
+                    </div>
+
+                    <div>
+                        <label asp-for="PrecoCusto" class="block text-sm font-light text-gray-700 mb-1">Preço de Custo (R$)</label>
+                        <input asp-for="PrecoCusto" type="text" class="w-full p-1.5 border border-gray-300 rounded-lg shadow-sm focus:border-green-500 focus:outline-none focus:ring-green-500 focus:ring-1 transition duration-150 ease-in-out">
+                    </div>
+
+                </div>
+
+                <div>
+                    <label asp-for="Descricao" class="block text-sm font-light text-gray-700 mb-1"> Descrição do Produto</label>
+
+                    <textarea asp-for="Descricao" rows="4" class="w-full p-1.5 border border-gray-300 rounded-lg shadow-sm focus:border-green-500 focus:outline-none focus:ring-green-500 focus:ring-1 transition duration-150 ease-in-out">
+                        </textarea>
+                </div>
+
+                <div class="grid grid-cols-2 gap-2 mb-2">
+                    <div>
+
+                        <label  class="block text-sm font-light text-gray-700 mb-1">Fotos do produto</label>
+
+                        <div class="flex flex-wrap gap-2 space-y-2">
+                            <input  type="file" class="text-sm font-light text-gray-700">
+                            <input  type="file" class="text-sm font-light text-gray-700">
+                            <input  type="file" class="text-sm font-light text-gray-700">
+
+                        </div>
+                    </div>
+
+                    <div>
+
+                        <label class="block text-sm font-light text-gray-700 mb-1" for="categoria-select">Categorias</label>
+                        <select asp-for="CategoriaId" id="categoria-select" name="categoriaId"
+                                class="w-full p-2 border border-gray-300 rounded-md text-sm font-light text-gray-700 focus:border-green-500 focus:outline-none focus:ring-green-500 focus:ring-1 transition duration-150 ease-in-out ">
+                            <option value="" disabled selected>Selecione uma categoria</option>
+                            @foreach (var categoria in Model.CategoriasDisponiveisParaSelecao)
+                            {
+
+                                <option value="@categoria.Id">@categoria.Nome</option>
+
+                            }
+                        </select>
+
+
+
+                    </div>
+                </div>
+
+                <div class="">
+                    <h3 class="py-2 text-base font-medium text-slate-700">Tamanhos e estoque disponiveis</h3>
+                    <div class="bg-zinc-100  border border-gray-300 rounded-lg  ">
+                        <div class="mx-2 my-4 flex flex-wrap gap-2 justify-center items-center ">
+
+
+                                @for (int i = 0; i < Model.TamanhosSelecionados.Count; i++)
+                                {
+
+                                    <input asp-for="@Model.TamanhosSelecionados[i].TamanhoSelecionado" type="checkbox" class="size-4 border border-gray-300 rounded-lg shadow-sm">
+                                    <label>@Model.TamanhosDisponiveisParaSelecao[i].Name</label>
+                                    <label>Quantidade</label>
+                                    <input asp-for="@Model.TamanhosSelecionados[i].Quantidade" type="number" min="0"
+                                           class="w-8 border border-gray-300 rounded-md text-center text-base focus:border-green-500 focus:outline-none focus:ring-green-500 focus:ring-1 transition duration-150 ease-in-out">
+                                    <input type="hidden" asp-for="@Model.TamanhosSelecionados[i].TamanhoId" value="@Model.TamanhosSelecionados[i].TamanhoId" />
+                                    <input type="hidden" asp-for="@Model.TamanhosSelecionados[i].TamanhoNome" value="@Model.TamanhosDisponiveisParaSelecao[i].Name" />
+
+
+
+                                }
+
+
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="border-t-[1px] border-t-zinc-200 mt-6 flex justify-between">
+                    <a asp-action="index" class="px-2 py-1 my-3 bg-slate-300 rounded-md">voltar a lista</a>
+                    <button type="submit" class="px-2 py-1 my-3 bg-green-500 rounded-md">Atualizar</button>
+
+                </div>
+
+
+
+            </div>
+
+
+        </div>
+    </main>
+</form>
+
+
+
+
+

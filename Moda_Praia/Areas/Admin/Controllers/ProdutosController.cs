@@ -32,7 +32,7 @@ namespace Moda_Praia.Areas.Admin.Controllers
         public IActionResult Create()
         {
             var categorias = _context.Categorias.ToList();
-            var tamanhos = _context.Tamanhos.ToList(); // vem Id e nome
+            var tamanhos = _context.Tamanhos.ToList(); 
             var viewModel = new ProdutoViewModel
             {
                 CategoriasDisponiveis = categorias,
@@ -144,6 +144,21 @@ namespace Moda_Praia.Areas.Admin.Controllers
 
                             _context.Add(tamnhoProdutoBanco);
                         }
+
+                        if (!item.TamanhoSelecionado)
+                        {
+                            var tamnhoProdutoBanco = new ProdutoTamanho();
+
+                            // Associa a instância do produto (o EF resolve o Id no SaveChanges)
+                            tamnhoProdutoBanco.Produto = produtoBanco;
+
+                            tamnhoProdutoBanco.TamanhoId = item.TamanhoId;
+                            tamnhoProdutoBanco.Estoque = 0;
+
+                            _context.Add(tamnhoProdutoBanco);
+                        }
+
+
                     }
 
                     // 4. Salva todas as alterações (Produto, Imagens, Tamanhos) de uma vez
@@ -170,6 +185,71 @@ namespace Moda_Praia.Areas.Admin.Controllers
             }
         }
 
+
+        public IActionResult AtualizarProduto(int? id)
+        {
+           
+            var categoriasDisponiveis = _context.Categorias.Select(c => new Categoria
+            {
+                Id = c.Id,
+                Nome = c.Nome
+            }).ToList();
+
+            var tamanhosDisponiveis = _context.Tamanhos.Select(t => new Tamanho
+            {
+                Id = t.Id,
+                Name = t.Name
+            }).ToList();
+
+            var produtoAtualizar = _context.Produtos
+                 .Where(x => x.Id == id)
+                 .Select(p => new AtualizarProdutoViewModel
+                 {
+                     Id = p.Id,
+                     Nome = p.Nome,
+                     PrecoCusto = p.PrecoCusto,
+                     PrecoVenda = p.PrecoVenda,
+                     Descricao = p.Descricao,
+                     CorBase = p.CorBase,
+                     CategoriaId = p.CategoriaId,
+
+                     ImagensRoupaVIewModel = p.ProdutoImagens.Select(i => new ImagensProdutoViewModel
+                     {
+                         UrlImagem = i.UrlImagem
+                     }).ToList(),
+
+                     TamanhosSelecionados = p.ProdutoTamanhos.Select(t => new ProdutoTamanhoViewModel
+                     {
+                         TamanhoId = t.TamanhoId,
+                         TamanhoNome = t.Tamanho.Name,
+                         Quantidade = t.Estoque,
+                         TamanhoSelecionado = t.Estoque> 0
+                         
+
+                     }).ToList()
+                     
+
+                 }).FirstOrDefault();
+
+            produtoAtualizar.CategoriasDisponiveisParaSelecao = categoriasDisponiveis;
+            produtoAtualizar.TamanhosDisponiveisParaSelecao = tamanhosDisponiveis;
+
+
+            return View(produtoAtualizar);
+        }
+
+        [HttpPost]
+        [AutoValidateAntiforgeryToken]
+        public async Task<IActionResult> AtualizarProduto(int id, AtualizarProdutoViewModel produto)
+        {
+            
+
+            return Ok(produto);        
+        }
+
+
+
+
         public IActionResult Detalhes(int? id)
         {
             if(id == null || id <= 0)
@@ -178,6 +258,7 @@ namespace Moda_Praia.Areas.Admin.Controllers
             }
             var produtobanco = _context.Produtos.
                 Include(x => x.ProdutoImagens).
+                Include(x => x.ProdutoTamanhos).
                 FirstOrDefault(x => x.Id == id);
             
             return View(produtobanco);
