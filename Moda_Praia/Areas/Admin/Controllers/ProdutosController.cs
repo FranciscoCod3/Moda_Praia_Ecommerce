@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Moda_Praia.Areas.Admin.Models;
 using Moda_Praia.Data;
 using Moda_Praia.Models;
+using System.Drawing;
 
 namespace Moda_Praia.Areas.Admin.Controllers
 {
@@ -20,11 +21,11 @@ namespace Moda_Praia.Areas.Admin.Controllers
         }
         public IActionResult Index()
         {
-             IEnumerable<Produto> produtosDb = _context.Produtos
-            .Include(x => x.Categoria) 
-            .Include(x => x.ProdutoTamanhos) 
-            .ThenInclude(pt => pt.Tamanho) 
-            .ToList();
+            IEnumerable<Produto> produtosDb = _context.Produtos
+           .Include(x => x.Categoria)
+           .Include(x => x.ProdutoTamanhos)
+           .ThenInclude(pt => pt.Tamanho)
+           .ToList();
 
             return View(produtosDb);
         }
@@ -32,7 +33,7 @@ namespace Moda_Praia.Areas.Admin.Controllers
         public IActionResult Create()
         {
             var categorias = _context.Categorias.ToList();
-            var tamanhos = _context.Tamanhos.ToList(); 
+            var tamanhos = _context.Tamanhos.ToList();
             var viewModel = new ProdutoViewModel
             {
                 CategoriasDisponiveis = categorias,
@@ -44,23 +45,23 @@ namespace Moda_Praia.Areas.Admin.Controllers
             {
                 viewModel.TamanhosSelecionados.Add(new ProdutoTamanhoViewModel
                 {
-                    
-                    TamanhoId = tamanho.Id,                   
-                    TamanhoNome = tamanho.Name,                    
+
+                    TamanhoId = tamanho.Id,
+                    TamanhoNome = tamanho.Name,
                     Quantidade = 0,
 
-                    
+
                 });
-            }   
+            }
 
             return View(viewModel);
         }
 
         [HttpPost]
         [AutoValidateAntiforgeryToken]
-        public async Task<IActionResult>  Create(ProdutoViewModel produtoViewModel)
+        public async Task<IActionResult> Create(ProdutoViewModel produtoViewModel)
         {
-            if (!ModelState.IsValid || produtoViewModel.ImagensRoupa == null || !produtoViewModel.ImagensRoupa.Any(x => x.Length >0))
+            if (!ModelState.IsValid || produtoViewModel.ImagensRoupa == null || !produtoViewModel.ImagensRoupa.Any(x => x.Length > 0))
             {
                 return View(produtoViewModel);
             }
@@ -188,7 +189,7 @@ namespace Moda_Praia.Areas.Admin.Controllers
 
         public IActionResult AtualizarProduto(int? id)
         {
-           
+
             var categoriasDisponiveis = _context.Categorias.Select(c => new Categoria
             {
                 Id = c.Id,
@@ -223,11 +224,11 @@ namespace Moda_Praia.Areas.Admin.Controllers
                          TamanhoId = t.TamanhoId,
                          TamanhoNome = t.Tamanho.Name,
                          Quantidade = t.Estoque,
-                         TamanhoSelecionado = t.Estoque> 0
-                         
+                         TamanhoSelecionado = t.Estoque > 0
+
 
                      }).ToList()
-                     
+
 
                  }).FirstOrDefault();
 
@@ -240,11 +241,15 @@ namespace Moda_Praia.Areas.Admin.Controllers
 
         [HttpPost]
         [AutoValidateAntiforgeryToken]
-        public async Task<IActionResult> AtualizarProduto(int id, AtualizarProdutoViewModel produto)
+        public async Task<IActionResult> AtualizarProduto(int id, AtualizarProdutoViewModel produtoAtualizado)
         {
-            
+            var produtoBanco = await _context.Produtos.Include(x => x.ProdutoImagens).FirstOrDefaultAsync(x => x.Id == id);
 
-            return Ok(produto);        
+            _context.Entry(produtoBanco).CurrentValues.SetValues(produtoAtualizado);
+
+            _context.SaveChangesAsync();
+
+            return RedirectToAction("Index");
         }
 
 
@@ -252,7 +257,7 @@ namespace Moda_Praia.Areas.Admin.Controllers
 
         public IActionResult Detalhes(int? id)
         {
-            if(id == null || id <= 0)
+            if (id == null || id <= 0)
             {
                 return View();
             }
@@ -260,10 +265,9 @@ namespace Moda_Praia.Areas.Admin.Controllers
                 Include(x => x.ProdutoImagens).
                 Include(x => x.ProdutoTamanhos).
                 FirstOrDefault(x => x.Id == id);
-            
+
             return View(produtobanco);
         }
 
     }
 }
-    
