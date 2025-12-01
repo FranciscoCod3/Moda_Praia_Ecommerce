@@ -32,7 +32,7 @@ O objetivo principal é simular o fluxo de um e-commerce, desde a visualização
 | **ORM** | Entity Framework | 6.x |
 | **Banco de Dados** | SQL Server LocalDB / SQL Server | - |
 | **Frontend** | HTML5, CSS3, JavaScript | - |
-| **Estilo** | Bootstrap | 5.x |
+| **Estilo** | TailwindCss | 5.x |
 
 ## 🚀 Como Executar o Projeto Localmente
 
