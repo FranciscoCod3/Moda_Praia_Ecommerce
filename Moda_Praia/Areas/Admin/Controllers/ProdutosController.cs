@@ -5,6 +5,7 @@ using Moda_Praia.Areas.Admin.Models;
 using Moda_Praia.Data;
 using Moda_Praia.Models;
 using System.Drawing;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Moda_Praia.Areas.Admin.Controllers
 {
@@ -214,9 +215,10 @@ namespace Moda_Praia.Areas.Admin.Controllers
                      CorBase = p.CorBase,
                      CategoriaId = p.CategoriaId,
 
-                     ImagensRoupaVIewModel = p.ProdutoImagens.Select(i => new ImagensProdutoViewModel
+                     ImagensRoupaViewModel = p.ProdutoImagens.Select(i => new ImagensProdutoViewModel
                      {
-                         UrlImagem = i.UrlImagem
+                         Id = i.Id,
+                         UrlImagem = "~/" + i.UrlImagem
                      }).ToList(),
 
                      TamanhosSelecionados = p.ProdutoTamanhos.Select(t => new ProdutoTamanhoViewModel

@@ -45,14 +45,35 @@
                 </div>
 
                 <div class="grid grid-cols-2 gap-2 mb-2">
-                    <div>
+                    <div class="col-span-2">
 
-                        <label  class="block text-sm font-light text-gray-700 mb-1">Fotos do produto</label>
+                        <label class="block text-sm font-light text-gray-700 mb-1">Fotos do produto</label>
 
-                        <div class="flex flex-wrap gap-2 space-y-2">
-                            <input  type="file" class="text-sm font-light text-gray-700">
-                            <input  type="file" class="text-sm font-light text-gray-700">
-                            <input  type="file" class="text-sm font-light text-gray-700">
+                        <div class="flex justify-between gap-2 mt-4 ">
+                            
+                            <div>
+                                <input asp-for="@Model.ImagensRoupaViewModel[0].UrlImagem" type="file" class="hidden">
+                                <label  class="cursor-pointer  shadow hover:bg-orange-500 transition duration-150 ease-in-out text-sm font-light mx-0 py-2 px-2 bg-orange-400 rounded-md">Primeira imagem</label>
+                                <img asp-for="@Model.ImagensRoupaViewModel[0].UrlImagem" src="" class=" object-cover mx-auto block rounded-md" />
+
+                            </div>
+
+                            <div>
+                                <input id="input01" type="file" class="hidden">
+                                <label for="input01" class="cursor-pointer shadow hover:bg-orange-500 transition duration-150 ease-in-out text-sm font-light mx-0 py-2 px-2 bg-orange-400 rounded-md">Segunda imagem</label>
+                                <img src="@Url.Content(@Model.ImagensRoupaViewModel[1].UrlImagem)" alt="Descrição da Imagem" class="object-cover mx-auto block rounded-md" />
+
+                            </div>
+
+                            <div>
+                                <input id="input01" type="file" class="hidden">
+                                <label for="input01" class="cursor-pointer shadow hover:bg-orange-500 transition duration-150 ease-in-out text-sm font-light mx-0 py-2 px-2 bg-orange-400 rounded-md">Terceira imagem</label>
+                                <img src="@Url.Content(@Model.ImagensRoupaViewModel[2].UrlImagem)" class="rounded-md object-cover mx-auto block" />
+
+                            </div>
+
+
+
 
                         </div>
                     </div>
@@ -60,20 +81,25 @@
                     <div>
 
                         <label class="block text-sm font-light text-gray-700 mb-1" for="categoria-select">Categorias</label>
-                        <select asp-for="CategoriaId" id="categoria-select" name="categoriaId"
-                                class="w-full p-2 border border-gray-300 rounded-md text-sm font-light text-gray-700 focus:border-green-500 focus:outline-none focus:ring-green-500 focus:ring-1 transition duration-150 ease-in-out ">
-                            <option value="" disabled selected>Selecione uma categoria</option>
-                            @foreach (var categoria in Model.CategoriasDisponiveisParaSelecao)
-                            {
+                        <div>
 
-                                <option value="@categoria.Id">@categoria.Nome</option>
 
-                            }
-                        </select>
+                            <select asp-for="CategoriaId" id="categoria-select" name="categoriaId"
+                                    class="w-full p-2 border border-gray-300 rounded-md text-sm font-light text-gray-700 focus:border-green-500 focus:outline-none focus:ring-green-500 focus:ring-1 transition duration-150 ease-in-out ">
+                                <option value="" disabled selected>Selecione uma categoria</option>
+                                @foreach (var categoria in Model.CategoriasDisponiveisParaSelecao)
+                                {
 
+                                    <option value="@categoria.Id">@categoria.Nome</option>
+
+                                }
+                            </select>
+
+                        </div>
 
 
                     </div>
+
                 </div>
 
                 <div class="">
